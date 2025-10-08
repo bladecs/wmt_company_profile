@@ -131,8 +131,8 @@ onMounted(() => {
         </div>
 
         <!-- Content -->
-        <section id="about-us" class="w-full h-full flex flex-row">
-            <div class="content-text flex-1 flex-col">
+        <section id="about-us" class="w-full h-full flex flex-row p-15 gap-12">
+            <div class="content-text flex-1 flex flex-col gap-5">
                 <h3 class="p-3 bg-[var(--blue-transparent)] w-fit text-[var(--blue)] font-bold rounded-full">About Our
                     Company</h3>
                 <h1 class="font-bold text-[var(--dark-blue)] xl:text-5xl md:text-3xl sm:text-xl">Shaping Precision</h1>
@@ -155,8 +155,27 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <div class="content-card flex-1 flex-wrap">
-                
+            <div class="content-card flex-1 flex flex-wrap justify-center items-center gap-6 flex-row ">
+                <div class="card w-56 h-1/2 rounded-xl bg-white flex flex-col justify-center items-center">
+                    <span class="material-symbols-outlined icon-filled bg-(--blue-transparent) p-4 rounded-xl text-[var(--deep-blue)] icon-card">shield</span>
+                    <h1 class="text-[var(--blue)] text-lg font-bold">Quality Assurance</h1>
+                    <p>ISO certified processes ensuring the highest standards in every product we deliver.</p>
+                </div>
+                <div class="card w-56 h-1/2 rounded-xl bg-white flex flex-col justify-center items-center">
+                    <span class="material-symbols-outlined icon-filled bg-(--blue-transparent) p-4 rounded-xl text-[var(--deep-blue)] icon-card">workspace_premium</span>
+                    <h1 class="text-[var(--blue)] text-lg font-bold">Industriy Excellence</h1>
+                    <p>ISO certified processes ensuring the highest standards in every product we deliver.</p>
+                </div>
+                <div class="card w-56 h-1/2 rounded-xl bg-white flex flex-col justify-center items-center">
+                    <span class="material-symbols-outlined icon-filled bg-(--blue-transparent) p-4 rounded-xl text-[var(--deep-blue)] icon-card">group</span>
+                    <h1 class="text-[var(--blue)] text-lg font-bold">Expert Team</h1>
+                    <p>ISO certified processes ensuring the highest standards in every product we deliver.</p>
+                </div>
+                <div class="card w-56 h-1/2 rounded-xl bg-white flex flex-col justify-center items-center">
+                    <span class="material-symbols-outlined icon-filled bg-(--blue-transparent) p-4 rounded-xl text-[var(--deep-blue)] icon-card">target</span>
+                    <h1 class="text-[var(--blue)] text-lg font-bold">Precision Focus</h1>
+                    <p>ISO certified processes ensuring the highest standards in every product we deliver.</p>
+                </div>
             </div>
         </section>
         <section id="service">
@@ -220,5 +239,13 @@ li.activate {
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+.card{
+    box-shadow: 0 0 10px var(--blue);
+}
+
+.icon-card{
+    font-size: 2rem;
 }
 </style>
