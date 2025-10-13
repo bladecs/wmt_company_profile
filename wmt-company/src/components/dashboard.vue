@@ -303,7 +303,7 @@ onMounted(() => {
                 </div>
             </div>
         </section>
-        <section id="service" class="relative w-full h-fit flex flex-col overflow-hidden px-15">
+        <section id="service" class="relative w-full h-fit flex flex-col overflow-hidden px-15 py-15">
             <div id="svgGroup" class="fade-group">
                 <img class="fade-item rec-1 absolute z-10 top-0 left-0" src="../assets/svg/rec_1.svg" alt="">
                 <img class="fade-item rec-2 absolute z-0 top-0 left-0" src="../assets/svg/rec_2.svg" alt="">
@@ -497,7 +497,7 @@ onMounted(() => {
                         </div>
                         <div class="text-group">
                             <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
-                            }}</h1>
+                                }}</h1>
                             <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
                         </div>
                     </template>
@@ -506,7 +506,7 @@ onMounted(() => {
                         <!-- Teks di kiri -->
                         <div class="text-group">
                             <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
-                            }}</h1>
+                                }}</h1>
                             <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
                         </div>
                         <!-- Gambar di kanan -->
@@ -547,7 +547,7 @@ onMounted(() => {
             <img src="../assets/svg/ft6.svg" alt="" class="absolute right-20 bottom-0 z-40">
             <img src="../assets/svg/ft7.svg" alt="" class="absolute right-0 bottom-0 z-70">
         </div>
-        <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-row items-start p-20">
+        <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-row items-center justify-between gap-15 p-20">
             <div class="summary flex flex-col items-start w-1/3 gap-4">
                 <div class="header flex flex-row items-center gap-5">
                     <img src="../assets/img/Logo_wmt.png" alt="" class="w-30 h-auto">
@@ -564,34 +564,79 @@ onMounted(() => {
                         sectors such as automotive, consumer goods, and industrial components.
                     </p>
                 </div>
-                <a href="#" class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
+                <a href="#"
+                    class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
                     <img src="../assets/icons/whatsapp.png" alt="" class="w-5 h-5 mr-2">
                     Direct Message US
                 </a>
             </div>
-            <div class="footer-menu flex flex-col gap-3">
-                <h1></h1>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="footer-menu flex flex-col gap-3">
-                <h1></h1>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="footer-menu flex flex-col gap-3">
-                <h1></h1>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+            <div class="footer-menu flex flex-row gap-15">
+                <div class="group-footer flex flex-col gap-5">
+                    <div class="flex flex-col items-start gap-3">
+                        <h1 class="text-white font-bold flex justify-center items-center gap-2"><span
+                                class="material-symbols-outlined">apartment</span>Company</h1>
+                        <ul>
+                            <li><a href="#" class="text-white text-start">About Us</a></li>
+                            <li><a href="#" class="text-white text-start">History</a></li>
+                            <li><a href="#" class="text-white text-start">Certificates</a></li>
+                            <li><a href="#" class="text-white text-start">Customer</a></li>
+                        </ul>
+                    </div>
+                    <div class="group-footer flex flex-col items-start gap-3">
+                        <h1 class="text-white font-bold flex justify-center items-center gap-2">
+                            <span class="material-symbols-outlined">license
+                            </span>Certificates
+                        </h1>
+                        <ul>
+                            <li><a href="#" class="text-white text-start">ISO 9001 : 2015 Quality Management</a></li>
+                            <li><a href="#" class="text-white text-start">ISO 14001: 2015 Enviromental</a></li>
+                            <li><a href="#" class="text-white text-start">ISO 45001 : 2015 K3</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-col items-start gap-3">
+                    <h1 class="text-white font-bold flex justify-center items-center gap-2">
+                        <span class="material-symbols-outlined">apps</span>Services
+                    </h1>
+                    <ul>
+                        <li><a href="#" class="text-white text-start">Precision Part</a></li>
+                        <li><a href="#" class="text-white text-start">Plastic Injection</a></li>
+                        <li><a href="#" class="text-white text-start">Mold & Dies</a></li>
+                        <li><a href="#" class="text-white text-start">Medical Part</a></li>
+                        <li><a href="#" class="text-white text-start">Turbine Part</a></li>
+                        <li><a href="#" class="text-white text-start">Rubber</a></li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h1 class="text-white font-bold">Contact Infomation</h1>
+                    <ul class="flex flex-col gap-3">
+                        <li class="flex flex-col items-start gap-3">
+                            <div class="header flex flex-row items-start justify-center gap-2">
+                                <span class="material-symbols-outlined text-white">distance</span>
+                                <h2 class="text-white">Location</h2>
+                            </div>
+                            <a href="#"
+                                class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
+                                <img src="../assets/icons/maps.svg" alt="" class="w-5 h-5 mr-2">
+                                Our Location
+                            </a>
+                        </li>
+                        <li class="flex flex-col items-start gap-3">
+                            <div class="header flex flex-row items-start justify-center gap-2">
+                                <span class="material-symbols-outlined text-white">call</span>
+                                <h2 class="text-white">Phone</h2>
+                            </div>
+                            <h2 class="text-white ps-7">+62 812 207 030</h2>
+                        </li>
+                        <li class="flex flex-col items-start gap-3">
+                            <div class="header flex flex-row items-start justify-center gap-2">
+                                <span class="material-symbols-outlined text-white">fax</span>
+                                <h2 class="text-white">Fax</h2>
+                            </div>
+                            <h2 class="text-white ps-7">+62 22 7333079</h2>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </footer>
     </div>
