@@ -5,7 +5,46 @@ import slider2 from '../assets/img/slider-2.png'
 import slider3 from '../assets/img/slider-3.png'
 import slider4 from '../assets/img/slider-4.png'
 
+// Import gambar untuk reveal boxes
+import techImage1 from '../assets/img/image.png'
+import techImage2 from '../assets/img/slider-1.png'
+import techImage3 from '../assets/img/slider-2.png'
+import techImage4 from '../assets/img/slider-3.png'
+import techImage5 from '../assets/img/slider-4.png'
+
 const slides = [slider1, slider2, slider3, slider4]
+
+// Array untuk gambar teknologi
+const techImages = [techImage1, techImage2, techImage3, techImage4, techImage5]
+
+// Data untuk setiap content column
+const techContents = [
+    {
+        title: "Milling 5 AXIS",
+        description: "Advanced 5-Axis CNC machining delivers unmatched precision and flexibility, enabling complex parts to be produced in a single setup",
+        imageIndex: 0
+    },
+    {
+        title: "CNC Turning",
+        description: "High-precision turning operations for cylindrical parts with superior surface finish and dimensional accuracy",
+        imageIndex: 1
+    },
+    {
+        title: "EDM Machining",
+        description: "Electrical Discharge Machining for complex geometries and hard materials that are difficult to machine conventionally",
+        imageIndex: 2
+    },
+    {
+        title: "Quality Inspection",
+        description: "Comprehensive metrology and quality control using advanced CMM and measurement equipment",
+        imageIndex: 3
+    },
+    {
+        title: "Surface Treatment",
+        description: "Various surface finishing processes including anodizing, plating, and coating for enhanced durability",
+        imageIndex: 4
+    }
+]
 
 const currentIndex = ref(0)
 const totalSlides = 4
@@ -19,8 +58,14 @@ const prevSlide = () => {
     currentIndex.value = (currentIndex.value - 1 + totalSlides) % totalSlides
 }
 
+// Function untuk mendapatkan background image URL
+const getTechBackground = (imageIndex) => {
+    return `url('${techImages[imageIndex]}')`
+}
+
 onMounted(() => {
     setInterval(nextSlide, 5000)
+
     // Observer untuk svgGroup
     const svgGroup = document.getElementById('svgGroup')
     const items = svgGroup.querySelectorAll('.fade-item')
@@ -38,6 +83,24 @@ onMounted(() => {
     })
 
     observer.observe(svgGroup)
+
+    // Observer untuk svgGroup-Tech
+    const svgGroupTech = document.getElementById('svgGroup-Tech')
+    const itemsTech = svgGroupTech.querySelectorAll('.fade-item')
+
+    const observerTech = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                itemsTech.forEach(item => item.classList.add('visible'))
+            } else {
+                itemsTech.forEach(item => item.classList.remove('visible'))
+            }
+        })
+    }, {
+        threshold: 0.2
+    })
+
+    observerTech.observe(svgGroupTech)
 
     // Observer untuk svgGroup-Footer
     const svgGroupFooter = document.getElementById('svgGroup-Footer')
@@ -57,11 +120,10 @@ onMounted(() => {
 
     footerObserver.observe(svgGroupFooter)
 })
-
 </script>
 
 <template>
-    <div class="w-full h-full flex flex-col">
+    <div class="w-full h-fit flex flex-col">
         <!-- Navbar -->
         <nav class="w-full bg-white flex items-center justify-between px-6 lg:px-10 py-4 shadow-md">
             <!-- Logo -->
@@ -406,9 +468,132 @@ onMounted(() => {
                     src="../assets/svg/rec_9.svg" alt="">
             </div>
         </section>
-        <section id="technology">
+        <section id="technology" class="relative w-full h-720 flex flex-col overflow-hidden px-15 py-30">
+            <div id="svgGroup-Tech" class="fade-group">
+                <img class="fade-item rec-10 absolute z-10 top-0 left-0" src="../assets/svg/rec_10.svg" alt="">
+                <img class="fade-item rec-11 absolute z-0 top-0 left-0" src="../assets/svg/rec_11.svg" alt="">
+                <img class="fade-item rec-12 absolute z-10 top-0 right-0" src="../assets/svg/rec_12.svg" alt="">
+                <img class="fade-item rec-13 absolute z-0 top-0 right-0" src="../assets/svg/rec_13.svg" alt="">
+            </div>
+            <div class="content flex flex-col w-full h-full items-center justify-center">
+                <div v-for="(tech, index) in techContents" :key="index"
+                    class="conten-col flex flex-row items-center justify-between gap-25 w-fit h-1/5">
 
+                    <template v-if="index % 2 === 0">
+                        <!-- Gambar di kiri -->
+                        <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
+                            <div class="reveal-box box1">
+                                <div class="reveal-inner"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                            <div class="reveal-box box2">
+                                <div class="reveal-inner"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                            <div class="reveal-box box3">
+                                <div class="reveal-inner"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
+                            }}</h1>
+                            <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
+                        </div>
+                    </template>
+
+                    <template v-else>
+                        <!-- Teks di kiri -->
+                        <div class="text-group">
+                            <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
+                            }}</h1>
+                            <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
+                        </div>
+                        <!-- Gambar di kanan -->
+                        <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
+                            <div class="reveal-box-right box1-right">
+                                <div class="reveal-inner-right"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                            <div class="reveal-box-right box2-right">
+                                <div class="reveal-inner-right"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                            <div class="reveal-box-right box3-right">
+                                <div class="reveal-inner-right"
+                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div id="svgGroup-Footer-Tech" class="fade-group">
+                <img class="fade-item fade-from-bottom rec-6 absolute z-10 bottom-0 left-0"
+                    src="../assets/svg/rec_6.svg" alt="">
+                <img class="fade-item fade-from-bottom rec-7 absolute z-0 bottom-0 left-0" src="../assets/svg/rec_7.svg"
+                    alt="">
+                <img class="fade-item fade-from-bottom rec-8 absolute z-10 bottom-0 right-0"
+                    src="../assets/svg/rec_8.svg" alt="">
+                <img class="fade-item fade-from-bottom rec-9 absolute z-0 bottom-0 right-0"
+                    src="../assets/svg/rec_9.svg" alt="">
+            </div>
         </section>
+        <div class="svgGroupFooter w-full h-full relative">
+            <img src="../assets/svg/ft1.svg" alt="" class="absolute left-0 bottom-0 z-70">
+            <img src="../assets/svg/ft2.svg" alt="" class="absolute left-5 bottom-0 z-40">
+            <img src="../assets/svg/ft3.svg" alt="" class="absolute left-80 bottom-0 z-50">
+            <img src="../assets/svg/ft4.svg" alt="" class="absolute left-150 bottom-0 z-70">
+            <img src="../assets/svg/ft5.svg" alt="" class="absolute right-60 bottom-0">
+            <img src="../assets/svg/ft6.svg" alt="" class="absolute right-20 bottom-0 z-40">
+            <img src="../assets/svg/ft7.svg" alt="" class="absolute right-0 bottom-0 z-70">
+        </div>
+        <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-row items-start p-20">
+            <div class="summary flex flex-col items-start w-1/3 gap-4">
+                <div class="header flex flex-row items-center gap-5">
+                    <img src="../assets/img/Logo_wmt.png" alt="" class="w-30 h-auto">
+                    <h1 class="text-white font-bold text-3xl">WAFIQ MITRA TEKNIK</h1>
+                </div>
+                <div class="text-content">
+                    <p class="text-white text-sm text-justify w-115">
+                        With over 20 years of expertise in CNC machining, molds & dies, and plastic manufacturing, PT
+                        Wafiq
+                        Mitra Teknik has grown into a trusted partner for industries seeking precision, innovation, and
+                        reliability.
+                        Our modern facilities and skilled team enable us to deliver complex, high-quality solutions
+                        across
+                        sectors such as automotive, consumer goods, and industrial components.
+                    </p>
+                </div>
+                <a href="#" class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
+                    <img src="../assets/icons/whatsapp.png" alt="" class="w-5 h-5 mr-2">
+                    Direct Message US
+                </a>
+            </div>
+            <div class="footer-menu flex flex-col gap-3">
+                <h1></h1>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="footer-menu flex flex-col gap-3">
+                <h1></h1>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="footer-menu flex flex-col gap-3">
+                <h1></h1>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -522,5 +707,139 @@ li.activate {
 
 .rec-4.visible {
     transition-delay: 0.3s;
+}
+
+.reveal-box {
+    position: relative;
+    width: 200px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.box1 {
+    cursor: pointer;
+    top: -100px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box2 {
+    cursor: pointer;
+    top: -50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box3 {
+    cursor: pointer;
+    top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box1:hover,
+.box2:hover,
+.box3:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+}
+
+.reveal-inner {
+    position: absolute;
+    top: -60px;
+    width: 900px;
+    height: 520px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.box1 .reveal-inner {
+    top: 0;
+    left: 0;
+}
+
+.box2 .reveal-inner {
+    left: -240px;
+}
+
+.box3 .reveal-inner {
+    top: -125px;
+    left: -480px;
+}
+
+.reveal-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.reveal-box-right {
+    position: relative;
+    width: 200px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.box1-right {
+    cursor: pointer;
+    top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box2-right {
+    cursor: pointer;
+    top: -50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box3-right {
+    cursor: pointer;
+    top: -100px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box1-right:hover,
+.box2-right:hover,
+.box3-right:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+}
+
+.reveal-inner-right {
+    position: absolute;
+    top: -60px;
+    width: 900px;
+    height: 520px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.box1-right .reveal-inner-right {
+    top: -110px;
+    left: 0;
+}
+
+.box2-right .reveal-inner-right {
+    left: -240px;
+}
+
+.box3-right .reveal-inner-right {
+    top: -10px;
+    left: -480px;
+}
+
+.reveal-box-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
 }
 </style>
