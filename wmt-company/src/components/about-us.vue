@@ -4,330 +4,201 @@ import { ref, onMounted } from 'vue'
 </script>
 
 <template>
-    <div class="w-full h-fit flex flex-col">
-        <!-- Navbar -->
-        <nav class="w-full bg-white flex items-center justify-between px-6 lg:px-10 py-4 shadow-md">
-            <!-- Logo -->
-            <div class="flex items-center gap-3">
-                <img src="../assets/img/Logo_wmt.png" alt="logo-wmt" class="h-10 sm:h-12 md:h-14" />
-                <h1 class="font-bold text-base sm:text-lg md:text-xl title-text whitespace-nowrap">
-                    WAFIQ MITRA TEKNIK
-                </h1>
+    <div class="flex flex-col items-center justify-center w-full h-fit">
+        <section class="relative w-full h-full flex items-center justify-center p-20">
+            <div class="svgGroup">
+                <img src="../assets/svg/rec_14.svg" alt="" class="absolute top-0 left-0 z-70">
+                <img src="../assets/svg/rec_15.svg" alt="" class="absolute top-0 left-0 z-40">
             </div>
-
-            <!-- Menu desktop -->
-            <ul class="hidden lg:flex gap-4 xl:gap-6">
-                <li
-                    class="activate flex py-2 px-3 rounded-full items-center justify-center gap-1 text-sm xl:text-base font-bold">
-                    <span class="material-symbols-outlined icon-outline">home_app_logo</span>Home
-                </li>
-                <li
-                    class="flex py-2 px-3 rounded-full items-center justify-center gap-1 text-sm xl:text-base font-bold">
-                    <span class="material-symbols-outlined icon-filled">apartment</span>Company
-                </li>
-                <li
-                    class="flex py-2 px-3 rounded-full items-center justify-center gap-1 text-sm xl:text-base font-bold">
-                    <span class="material-symbols-outlined icon-filled">apps</span>Services
-                </li>
-                <li
-                    class="flex py-2 px-3 rounded-full items-center justify-center gap-1 text-sm xl:text-base font-bold">
-                    <span class="material-symbols-outlined icon-filled">breaking_news</span>News & Activity
-                </li>
-            </ul>
-
-            <!-- Hamburger -->
-            <button @click="menuOpen = !menuOpen" class="lg:hidden text-3xl text-[var(--blue)]">
-                <span class="material-symbols-outlined">
-                    {{ menuOpen ? 'close' : 'menu' }}
-                </span>
-            </button>
-        </nav>
-
-        <!-- Menu Mobile -->
-        <transition name="fade">
-            <div v-if="menuOpen" class="flex flex-col bg-white shadow-md w-full lg:hidden z-50 px-6 py-4 space-y-3">
-                <a class="font-bold text-[var(--blue)] flex items-center gap-2"><span
-                        class="material-symbols-outlined">home_app_logo</span>Home</a>
-                <a class="font-bold text-[var(--blue)] flex items-center gap-2"><span
-                        class="material-symbols-outlined">apartment</span>Company</a>
-                <a class="font-bold text-[var(--blue)] flex items-center gap-2"><span
-                        class="material-symbols-outlined">apps</span>Services</a>
-                <a class="font-bold text-[var(--blue)] flex items-center gap-2"><span
-                        class="material-symbols-outlined">breaking_news</span>News & Activity</a>
-            </div>
-        </transition>
-
-        <!-- Slider -->
-        <div class="slider relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[90vh] overflow-hidden">
-            <div class="img-content flex transition-transform duration-700 ease-in-out"
-                :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-                <div class="relative min-w-full h-full" v-for="(img, index) in slides" :key="index">
-                    <img class="w-full h-full object-cover" :src="img" :alt="`slider-${index + 1}`" />
-                    <div class="absolute inset-0 bg-black/40"></div>
+            <div class="content flex flex-col items-center justify-center w-full h-fit gap-10">
+                <h1 class="font-bold text-[var(--dark-blue)] text-6xl">WAFIQ MITRA <span
+                        class="font-bold text-[var(--blue)] text-6xl">TEKNIK</span></h1>
+                <div class="text-content flex flex-row items-center justify-center gap-20 w-full h-fit">
+                    <p class="w-1/2 text-justify text-[var(--dark-blue) font-bold text-xl">PT Wafiq Mitra Teknik (WMT)
+                        is a
+                        certified manufacturing company specializing in high-precision
+                        molds, dies, and plastic products. With ISO 9001:2015 (Quality Management), ISO 14001:2015
+                        (Environmental Management), and ISO 45001:2015 (Occupational Health & Safety) certifications, we
+                        ensure every process meets international standards of excellence.
+                        <br><br>
+                        Our strengths lie in precision, innovation, and customer-focused services. We deliver reliable
+                        solutions with on-time performance, backed by a professional team and advanced production
+                        facilities. From automotive to industrial components, our services are tailored to meet diverse
+                        and demanding client requirements.
+                        <br><br>
+                        Strategically located in Bandung, West Java, Indonesia, WMT operates on a 2,400 m² factory site
+                        with 1,500 m² of production facilities, enabling us to serve both domestic and international
+                        clients efficiently.
+                    </p>
+                    <img src="../assets/img/slider-1.png" alt=""
+                        class="w-110 min-h-120 object-cover img-about-us overflow-hidden">
                 </div>
             </div>
-
-            <!-- Overlay Content -->
-            <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white z-10 px-4">
-                <div class="content flex flex-row items-center justify-between w-full px-4 md:px-10">
-                    <!-- Prev -->
-                    <button @click="prevSlide"
-                        class="bg-gray-400/40 hidden md:flex justify-center items-center hover:bg-black/60 p-2 md:p-3 rounded-full transition">
-                        <span class="material-symbols-outlined text-2xl md:text-3xl">chevron_left</span>
-                    </button>
-
-                    <!-- Text -->
-                    <div class="text-content text-center flex flex-col justify-center items-center">
-                        <h1 class="xl:text-9xl sm:text-5xl md:text-6xl font-bold mb-2">
-                            WAFIQ MITRA TEKNIK
-                        </h1>
-                        <p class="text-xs sm:text-sm md:text-base max-w-xl">
-                            A trusted partner for CNC machining services and high-quality plastic products,
-                            with a strong commitment to on-time delivery
-                        </p>
-                        <div class="link-group flex flex-row flex-wrap justify-center gap-3 mt-5">
-                            <a class="link-button font-bold px-4 py-2 sm:px-5 sm:py-2 w-32 sm:w-36 rounded-full text-center"
-                                href="#">Contact Us</a>
-                            <a class="link-button font-bold px-4 py-2 sm:px-5 sm:py-2 w-32 sm:w-36 rounded-full text-center"
-                                href="#">About Us</a>
+            <div class="svgGroup-Footer">
+                <img src="../assets/svg/rec_16.svg" alt="" class="absolute bottom-0 right-0 z-70">
+                <img src="../assets/svg/rec_17.svg" alt="" class="absolute bottom-0 right-0 z-40">
+            </div>
+        </section>
+        <section class="relative w-full h-200 flex items-center justify-center p-20">
+            <div class="svgGroup">
+                <img src="../assets/svg/rec_18.svg" alt="" class="absolute top-0 right-0 z-70">
+                <img src="../assets/svg/rec_19.svg" alt="" class="absolute top-0 right-0 z-40">
+            </div>
+            <div class="content flex flex-col items-center justify-center w-full h-fit gap-40">
+                <div class="header-text">
+                    <h1 class="text-6xl text-center font-bold text-[var(--dark-blue)]">Leading with</h1>
+                    <h1 class="text-6xl text-center font-bold text-[var(--blue)]">Technology and Quality</h1>
+                </div>
+                <div class="text-content flex flex-row gap-10">
+                    <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
+                        <div class="reveal-box box1">
+                            <div class="reveal-inner bg-[url(/src/assets/img/image.png)]">
+                            </div>
+                        </div>
+                        <div class="reveal-box box2">
+                            <div class="reveal-inner bg-[url(/src/assets/img/image.png)]">
+                            </div>
+                        </div>
+                        <div class="reveal-box box3">
+                            <div class="reveal-inner bg-[url(/src/assets/img/image.png)]">
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Next -->
-                    <button @click="nextSlide"
-                        class="bg-gray-400/40 hidden md:flex justify-center items-center hover:bg-black/60 p-2 md:p-3 rounded-full transition">
-                        <span class="material-symbols-outlined text-2xl md:text-3xl">chevron_right</span>
-                    </button>
-                </div>
-
-                <!-- Indicator -->
-                <div
-                    class="bg-gray-400/30 absolute bottom-3 sm:bottom-5 px-3 py-2 rounded-full flex justify-center gap-2">
-                    <span v-for="(n, index) in totalSlides" :key="index" class="w-2 h-2 sm:w-3 sm:h-3 rounded-full"
-                        :class="currentIndex === index ? 'bg-white' : 'bg-white/50'"></span>
+                    <div class="description flex flex-col items-end justify-start gap-5 ">
+                        <h1 class="text-[var(--blue)] bg-(--blue-transparent) font-bold rounded-full p-3">About Our
+                            Vision & Mission</h1>
+                        <p class="font-bold text-end w-160 ps-10 text-xl">
+                            PT Wafiq Mitra Teknik aims to be a leading technology-based manufacturing company with rapid
+                            growth and strong market presence. We are committed to delivering high-quality products with
+                            on-time delivery, mastering advanced technology, and continuously developing our human
+                            resources to stay competitive in the global manufacturing industry.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Content -->
-        <section id="about-us"
-            class="w-full min-h-screen flex flex-col xl:flex-row items-center xl:items-center justify-center xl:justify-between gap-12 px-6 md:px-12 xl:px-24 py-16 bg-white">
-            
+            <div class="svgGroup-Footer">
+                <img src="../assets/svg/rec_18.svg" alt=""
+                    class="absolute bottom-0 left-0 z-70 origin-center rotate-180">
+                <img src="../assets/svg/rec_19.svg" alt=""
+                    class="absolute bottom-0 left-0 z-40 origin-center rotate-180">
+            </div>
         </section>
-        <div class="svgGroupFooter w-full h-full relative">
-            <img src="../assets/svg/ft1.svg" alt="" class="absolute left-0 bottom-0 z-70">
-            <img src="../assets/svg/ft2.svg" alt="" class="absolute left-5 bottom-0 z-40">
-            <img src="../assets/svg/ft3.svg" alt="" class="absolute left-80 bottom-0 z-50">
-            <img src="../assets/svg/ft4.svg" alt="" class="absolute left-150 bottom-0 z-70">
-            <img src="../assets/svg/ft5.svg" alt="" class="absolute right-60 bottom-0">
-            <img src="../assets/svg/ft6.svg" alt="" class="absolute right-20 bottom-0 z-40">
-            <img src="../assets/svg/ft7.svg" alt="" class="absolute right-0 bottom-0 z-70">
-        </div>
-        <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-row items-center justify-between gap-15 p-20">
-            <div class="summary flex flex-col items-start w-1/3 gap-4">
-                <div class="header flex flex-row items-center gap-5">
-                    <img src="../assets/img/Logo_wmt.png" alt="" class="w-30 h-auto">
-                    <h1 class="text-white font-bold text-3xl">WAFIQ MITRA TEKNIK</h1>
-                </div>
-                <div class="text-content">
-                    <p class="text-white text-sm text-justify w-115">
-                        With over 20 years of expertise in CNC machining, molds & dies, and plastic manufacturing, PT
-                        Wafiq
-                        Mitra Teknik has grown into a trusted partner for industries seeking precision, innovation, and
-                        reliability.
-                        Our modern facilities and skilled team enable us to deliver complex, high-quality solutions
-                        across
-                        sectors such as automotive, consumer goods, and industrial components.
-                    </p>
-                </div>
-                <a href="#"
-                    class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
-                    <img src="../assets/icons/whatsapp.png" alt="" class="w-5 h-5 mr-2">
-                    Direct Message US
-                </a>
+        <section class="relative w-full h-200 flex items-center justify-center p-20">
+            <div class="svgGroup">
+                <img src="../assets/svg/rec_18.svg" alt=""
+                    class="absolute top-0 left-0 z-70 origin-center rotate-y-180">
+                <img src="../assets/svg/rec_19.svg" alt=""
+                    class="absolute top-0 left-0 z-40 origin-center rotate-y-180">
             </div>
-            <div class="footer-menu flex flex-row gap-15">
-                <div class="group-footer flex flex-col gap-5">
-                    <div class="flex flex-col items-start gap-3">
-                        <h1 class="text-white font-bold flex justify-center items-center gap-2"><span
-                                class="material-symbols-outlined">apartment</span>Company</h1>
-                        <ul>
-                            <li><a href="#" class="text-white text-start">About Us</a></li>
-                            <li><a href="#" class="text-white text-start">History</a></li>
-                            <li><a href="#" class="text-white text-start">Certificates</a></li>
-                            <li><a href="#" class="text-white text-start">Customer</a></li>
-                        </ul>
+            <div class="content flex flex-col items-center justify-center w-full h-fit gap-40">
+                <div class="header-text">
+                    <h1 class="text-6xl text-center font-bold text-[var(--dark-blue)]">Delivering Accuracy,</h1>
+                    <h1 class="text-6xl text-center font-bold text-[var(--blue)]">Quality, and Reliability</h1>
+                </div>
+                <div class="text-content flex flex-row gap-10">
+                    <div class="description flex flex-col items-start justify-start gap-5 ">
+                        <h1 class="text-[var(--blue)] bg-(--blue-transparent) font-bold rounded-full p-3">About Our
+                            Product</h1>
+                        <p class="font-bold text-justify w-160 pe-10 text-xl">
+                            PT Wafiq Mitra Teknik aims to be a leading technology-based manufacturing company with rapid
+                            growth and strong market presence. We are committed to delivering high-quality products with
+                            on-time delivery, mastering advanced technology, and continuously developing our human
+                            resources to stay competitive in the global manufacturing industry.
+                        </p>
                     </div>
-                    <div class="group-footer flex flex-col items-start gap-3">
-                        <h1 class="text-white font-bold flex justify-center items-center gap-2">
-                            <span class="material-symbols-outlined">license
-                            </span>Certificates
-                        </h1>
-                        <ul>
-                            <li><a href="#" class="text-white text-start">ISO 9001 : 2015 Quality Management</a></li>
-                            <li><a href="#" class="text-white text-start">ISO 14001: 2015 Enviromental</a></li>
-                            <li><a href="#" class="text-white text-start">ISO 45001 : 2015 K3</a></li>
-                        </ul>
+                    <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
+                        <div class="reveal-box-right box1-right bg-[url(/src/assets/img/slider-3.png)] bg-cover bg-center">
+                        </div>
+                        <div class="reveal-box-right box2-right bg-[url(/src/assets/img/slider-4.png)] bg-cover bg-center">
+                        </div>
+                        <div class="reveal-box-right box3-right bg-[url(/src/assets/img/precision-part.png)] bg-cover bg-center">
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-col items-start gap-3">
-                    <h1 class="text-white font-bold flex justify-center items-center gap-2">
-                        <span class="material-symbols-outlined">apps</span>Services
-                    </h1>
-                    <ul>
-                        <li><a href="#" class="text-white text-start">Precision Part</a></li>
-                        <li><a href="#" class="text-white text-start">Plastic Injection</a></li>
-                        <li><a href="#" class="text-white text-start">Mold & Dies</a></li>
-                        <li><a href="#" class="text-white text-start">Medical Part</a></li>
-                        <li><a href="#" class="text-white text-start">Turbine Part</a></li>
-                        <li><a href="#" class="text-white text-start">Rubber</a></li>
-                    </ul>
+            </div>
+            <div class="svgGroup-Footer">
+                <img src="../assets/svg/rec_18.svg" alt=""
+                    class="absolute bottom-0 right-0 z-70 origin-center rotate-180 rotate-y-180">
+                <img src="../assets/svg/rec_19.svg" alt=""
+                    class="absolute bottom-0 right-0 z-40 origin-center rotate-180 rotate-y-180">
+            </div>
+        </section>
+        <section class="relative w-full h-200 flex items-center justify-center p-20">
+            <div class="svgGroup">
+                <img src="../assets/svg/rec_18.svg" alt="" class="absolute top-0 right-0 z-70">
+                <img src="../assets/svg/rec_19.svg" alt="" class="absolute top-0 right-0 z-40">
+            </div>
+            <div class="content flex flex-col items-center justify-center w-full h-fit gap-15">
+                <div class="header-text flex flex-col items-center justify-center gap-3">
+                    <h1 class="text-6xl text-center font-bold text-[var(--dark-blue)]">Empowering People</h1>
+                    <h1 class="text-6xl text-center font-bold text-[var(--blue)]">Building Excellence</h1>
                 </div>
-                <div class="flex flex-col gap-3">
-                    <h1 class="text-white font-bold">Contact Infomation</h1>
-                    <ul class="flex flex-col gap-3">
-                        <li class="flex flex-col items-start gap-3">
-                            <div class="header flex flex-row items-start justify-center gap-2">
-                                <span class="material-symbols-outlined text-white">distance</span>
-                                <h2 class="text-white">Location</h2>
-                            </div>
-                            <a href="#"
-                                class="flex flex-row justify-center items-center w-80 h-12 p-5 rounded-xl bg-(--green) text-white">
-                                <img src="../assets/icons/maps.svg" alt="" class="w-5 h-5 mr-2">
-                                Our Location
-                            </a>
-                        </li>
-                        <li class="flex flex-col items-start gap-3">
-                            <div class="header flex flex-row items-start justify-center gap-2">
-                                <span class="material-symbols-outlined text-white">call</span>
-                                <h2 class="text-white">Phone</h2>
-                            </div>
-                            <h2 class="text-white ps-7">+62 812 207 030</h2>
-                        </li>
-                        <li class="flex flex-col items-start gap-3">
-                            <div class="header flex flex-row items-start justify-center gap-2">
-                                <span class="material-symbols-outlined text-white">fax</span>
-                                <h2 class="text-white">Fax</h2>
-                            </div>
-                            <h2 class="text-white ps-7">+62 22 7333079</h2>
-                        </li>
-                    </ul>
+                <div class="text-content flex items-center justify-center gap-3">
+                    <div class="description flex flex-col items-center justify-start gap-5 ">
+                        <h1 class="text-[var(--blue)] bg-(--blue-transparent) font-bold rounded-full p-3">About Our
+                            Company</h1>
+                        <p class="font-bold text-center w-250 ps-10 text-xl">
+                            As part of our mission to enhance human resource development, we invest heavily in our
+                            people. Our engineers, technicians, and specialists are continuously trained to sharpen both
+                            technical and management skills. This commitment creates a professional and adaptive
+                            workforce capable of tackling increasingly complex manufacturing challenges. With
+                            collaboration, integrity, and innovation as our core values, our employees are the driving
+                            force behind every success at PT Wafiq Mitra Teknik.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </footer>
+            <div class="svgGroup-Footer">
+                <img src="../assets/svg/rec_18.svg" alt=""
+                    class="absolute bottom-0 left-0 z-70 origin-center rotate-180">
+                <img src="../assets/svg/rec_19.svg" alt=""
+                    class="absolute bottom-0 left-0 z-40 origin-center rotate-180">
+            </div>
+        </section>
+        <section class="relative w-full h-200 flex items-center justify-center p-20 mb-20">
+            <div class="svgGroup">
+                <img src="../assets/svg/rec_18.svg" alt=""
+                    class="absolute top-0 left-0 z-70 origin-center rotate-y-180">
+                <img src="../assets/svg/rec_19.svg" alt=""
+                    class="absolute top-0 left-0 z-40 origin-center rotate-y-180">
+            </div>
+            <div class="content flex flex-col items-center justify-center w-full h-fit gap-40">
+                <div class="header-text">
+                    <h1 class="text-6xl text-center font-bold text-[var(--dark-blue)]">Delivering Accuracy,</h1>
+                    <h1 class="text-6xl text-center font-bold text-[var(--blue)]">Quality, and Reliability</h1>
+                </div>
+                <div class="text-content flex flex-row gap-10">
+                    <div class="description flex flex-col items-start justify-start gap-5 ">
+                        <h1 class="text-[var(--blue)] bg-(--blue-transparent) font-bold rounded-full p-3">About Our
+                            Product</h1>
+                        <p class="font-bold text-justify w-160 pe-10 text-xl">
+                            Aligned with our mission to master advanced technology and develop manufacturing knowledge,
+                            our facilities are equipped with state-of-the-art machines and tools. These include 3-axis
+                            and 5-axis CNC milling machines, CNC turning, CMM, and 3D scanning technology.
+                            <br><br>
+                            By continuously upgrading our production equipment and adopting modern CAD/CAM systems, we
+                            ensure precision, efficiency, and innovation in every project. This technological strength
+                            allows us to deliver world-class solutions and maintain competitiveness in the global
+                            market.
+                        </p>
+                    </div>
+                    <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
+                        <div class="reveal-box-right bg-[url(/src/assets/img/3d-scanner.webp)] bg-cover bg-center box1-right">
+                        </div>
+                        <div class="reveal-box-right bg-[url(/src/assets/img/slider-1.png)] bg-cover bg-center box2-right">
+                        </div>
+                        <div class="reveal-box-right bg-[url(/src/assets/img/slider-3.png)] bg-cover bg-center box3-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
 <style scoped>
-.title-text {
-    color: var(--blue);
-}
-
-li {
-    color: var(--blue);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-li:hover,
-li.activate {
-    background: var(--dark-blue);
-    color: var(--white);
-}
-
-.list-card {
-    color: var(--white);
-}
-
-.link-button {
-    border: 2px solid var(--blue);
-    position: relative;
-    overflow: hidden;
-}
-
-.link-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: var(--blue);
-    z-index: -1;
-    transition: width 0.4s ease-in-out;
-}
-
-.link-button:hover::before {
-    width: 100%;
-}
-
-.link-button:hover {
-    color: white;
-}
-
-/* Fade animation */
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-
-.card {
-    cursor: pointer;
-    box-shadow: 0 0 10px var(--blue);
-    transition: all 0.3s ease-in-out;
-}
-
-.icon-card {
-    font-size: 2rem;
-}
-
-.icon-service {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-    font-size: 3rem;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.fade-item {
-    opacity: 0;
-    transform: translateY(-40px);
-    transition: all 0.8s ease-out;
-}
-
-.fade-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fade-from-bottom {
-    transform: translateY(40px);
-}
-
-.fade-from-bottom.visible {
-    transform: translateY(0);
-}
-
-.rec-1.visible {
-    transition-delay: 0s;
-}
-
-.rec-3.visible {
-    transition-delay: 0s;
-}
-
-.rec-2.visible {
-    transition-delay: 0.3s;
-}
-
-.rec-4.visible {
-    transition-delay: 0.3s;
+.img-about-us {
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
 }
 
 .reveal-box {

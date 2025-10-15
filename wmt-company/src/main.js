@@ -4,12 +4,14 @@ import './style.css'
 import App from './App.vue'
 import Dashboard from './components/dashboard.vue'
 import About_us from './components/about-us.vue'
+import History from './components/history.vue'
 
 const router = createRouter({
     history: createWebHistory(),
     routes:[
         { path: '/', component: Dashboard },
-        { path: '/about-us', component: About_us }
+        { path: '/about-us', component: About_us },
+        { path: '/history', component: History },
     ]
 })
 
