@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { RouterView } from 'vue-router'
+import router from './router'
 import slider1 from './assets/img/slider-1.png'
 import slider2 from './assets/img/slider-2.png'
 import slider3 from './assets/img/slider-3.png'
@@ -10,11 +12,29 @@ const slides = [slider1, slider2, slider3, slider4]
 const currentIndex = ref(0)
 const totalSlides = 4
 const menuOpen = ref(false)
+const isLoading = ref(false)
 
 // State untuk dropdown
 const companyDropdownOpen = ref(false)
 const servicesDropdownOpen = ref(false)
 
+// Router Guards
+router.beforeEach((to, from, next) => {
+  if (to.path !== from.path) {
+    isLoading.value = true
+  } else {
+    isLoading.value = false
+  }
+  next()
+})
+
+router.afterEach(() => {
+  setTimeout(() => {
+    isLoading.value = false
+  }, 300)
+})
+
+// Slider Controls
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % totalSlides
 }
@@ -23,6 +43,7 @@ const prevSlide = () => {
   currentIndex.value = (currentIndex.value - 1 + totalSlides) % totalSlides
 }
 
+// Dropdown Controls
 const openCompanyDropdown = () => {
   companyDropdownOpen.value = true
   servicesDropdownOpen.value = false
@@ -62,7 +83,8 @@ onMounted(() => {
       <ul class="hidden lg:flex gap-4 xl:gap-6">
         <li
           class="activate flex py-2 px-3 rounded-full items-center justify-center gap-1 text-sm xl:text-base font-bold">
-          <span class="material-symbols-outlined icon-outline">home_app_logo</span>Home
+          <router-link to="/" @click="startLoading" class="flex items-center gap-1"><span
+              class="material-symbols-outlined icon-filled">home_app_logo</span>Home</router-link>
         </li>
 
         <!-- Company Dropdown -->
@@ -76,14 +98,14 @@ onMounted(() => {
           <transition name="dropdown">
             <div v-if="companyDropdownOpen"
               class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-200">
-              <router-link to="/about-us"
+              <router-link to="/about-us" @click="startLoading"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">About
                 Us</router-link>
-              <router-link to="/history"
+              <router-link to="/history" @click="startLoading"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">History</router-link>
-              <router-link to="#"
+              <router-link to="/certificate" @click="startLoading"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Certificates</router-link>
-              <router-link to="#"
+              <router-link to="/customer" @click="startLoading"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Customer</router-link>
             </div>
           </transition>
@@ -150,10 +172,11 @@ onMounted(() => {
           </div>
           <transition name="mobile-dropdown">
             <div v-if="companyDropdownOpen" class="pl-6 mt-2 space-y-2">
-              <a href="#" class="block text-[var(--blue)]">About Us</a>
-              <a href="#" class="block text-[var(--blue)]">History</a>
-              <a href="#" class="block text-[var(--blue)]">Certificates</a>
-              <a href="#" class="block text-[var(--blue)]">Customer</a>
+              <router-link to="/about-us" @click="startLoading" class="block text-[var(--blue)]">About Us</router-link>
+              <router-link to="/history" @click="startLoading" class="block text-[var(--blue)]">History</router-link>
+              <router-link to="/certificate" @click="startLoading"
+                class="block text-[var(--blue)]">Certificates</router-link>
+              <router-link to="/customer" @click="startLoading" class="block text-[var(--blue)]">Customer</router-link>
             </div>
           </transition>
         </div>
@@ -238,9 +261,35 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <RouterView />
-  <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-col mt-20">
-    <div class="svgGroupFooter w-full h-full relative ">
+
+  <!-- Loading Component -->
+  <transition name="fade">
+    <div v-if="isLoading" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+      <div class="loading-container text-center">
+        <!-- Logo -->
+        <img src="./assets/img/Logo_wmt.png" alt="logo-wmt" class="h-20 mx-auto mb-4" />
+
+        <!-- Loading Spinner -->
+        <div
+          class="loading-spinner w-16 h-16 border-4 border-[var(--blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4">
+        </div>
+
+        <!-- Loading Text -->
+        <p class="text-[var(--blue)] font-bold text-lg">Loading...</p>
+        <p class="text-gray-600 text-sm mt-2">Please wait while we prepare your content</p>
+      </div>
+    </div>
+  </transition>
+
+  <!-- Router View dengan Loading Handler -->
+  <RouterView v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" @vue:mounted="stopLoading" @vue:error="stopLoading" />
+    </transition>
+  </RouterView>
+
+  <footer class="w-full h-120 bg-[var(--footer-dark)] flex flex-col mt-60">
+    <div class="svgGroupFooter w-full h-full relative">
       <img src="./assets/svg/ft1.svg" alt="" class="absolute left-0 bottom-0 z-70">
       <img src="./assets/svg/ft2.svg" alt="" class="absolute left-5 bottom-0 z-40">
       <img src="./assets/svg/ft3.svg" alt="" class="absolute left-80 bottom-0 z-50">
@@ -384,5 +433,61 @@ li.activate {
 
 .link-button:hover {
   color: white;
+}
+
+/* Loading Styles */
+.loading-spinner {
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Transition Effects */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Dropdown Transitions */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.3s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-dropdown-enter-active,
+.mobile-dropdown-leave-active {
+  transition: all 0.3s ease;
+}
+
+.mobile-dropdown-enter-from,
+.mobile-dropdown-leave-to {
+  opacity: 0;
+  max-height: 0;
+}
+
+.mobile-dropdown-enter-to,
+.mobile-dropdown-leave-from {
+  opacity: 1;
+  max-height: 500px;
 }
 </style>
