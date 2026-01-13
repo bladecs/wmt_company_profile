@@ -64,14 +64,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex justify-center items-center flex-col py-20">
+    <div class="flex justify-center items-center flex-col py-25 modern-timeline">
         <h3
-            class="p-3 bg-[var(--blue-transparent)] w-fit text-[var(--blue)] font-bold rounded-full text-sm md:text-base mb-5">
+            class="p-3 bg-[var(--blue-transparent)] w-fit text-white font-bold rounded-full text-sm md:text-base mb-5">
             About Our History
         </h3>
-        <h1 class="text-[var(--blue)] text-center font-bold text-5xl mb-2">A Legacy of Precision</h1>
-        <h1 class="text-[var(--dark-blue)] text-center font-bold text-5xl mb-2">A Future of Inovation</h1>
-        <p class="text-[var(--gray)] w-150 text-center">Evolving from precision machining to global innovation, our
+        <h1 class="text-white text-center font-bold text-5xl mb-2">A Legacy of Precision</h1>
+        <h1 class="text-[var(--white)] text-center font-bold text-5xl mb-2">A Future of Innovation</h1>
+        <p class="text-white/80 w-150 text-center">Evolving from precision machining to global innovation, our
             journey reflects
             continuous growth, technology adoption, and excellence.</p>
 
@@ -101,7 +101,7 @@ onUnmounted(() => {
                         </div>
                         <div class="text-section">
                             <div class="text-content text-end">
-                                <h1 class="year">{{ item.year }}</h1>
+                                <div class="year-badge">{{ item.year }}</div>
                                 <h3 class="title">{{ item.title }}</h3>
                                 <p class="description">{{ item.description }}</p>
                             </div>
@@ -110,7 +110,7 @@ onUnmounted(() => {
                     <div v-else class="item-content right-content">
                         <div class="text-section">
                             <div class="text-content text-start">
-                                <h1 class="year">{{ item.year }}</h1>
+                                <div class="year-badge">{{ item.year }}</div>
                                 <h3 class="title">{{ item.title }}</h3>
                                 <p class="description">{{ item.description }}</p>
                             </div>
@@ -129,6 +129,25 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.modern-timeline {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.modern-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.2) 0%, transparent 50%);
+    z-index: 0;
+}
+
 .timeline-container {
     padding: 4rem 2rem;
     min-height: 100vh;
@@ -138,9 +157,9 @@ onUnmounted(() => {
     text-align: center;
     font-size: 3rem;
     font-weight: 800;
-    color: var(--dark-blue);
+    color: white;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -149,7 +168,7 @@ onUnmounted(() => {
 .timeline-subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: var(--blue);
+    color: #93c5fd;
     margin-bottom: 4rem;
     max-width: 600px;
     margin-left: auto;
@@ -162,14 +181,15 @@ onUnmounted(() => {
     transform: translateX(-50%);
     width: 4px;
     height: 85%;
-    background: var(--dark-blue);
+    background: linear-gradient(to bottom, #3b82f6, #60a5fa, #3b82f6);
     z-index: 1;
+    border-radius: 2px;
 }
 
 .line {
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, var(--dark-blue), var(--blue));
+    background: linear-gradient(to bottom, #3b82f6, #60a5fa, #3b82f6);
     border-radius: 2px;
 }
 
@@ -214,7 +234,7 @@ onUnmounted(() => {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--blue);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     padding: 0;
     display: flex;
     align-items: center;
@@ -222,7 +242,8 @@ onUnmounted(() => {
     transition: all 0.5s ease;
     opacity: 0;
     transform: scale(0.8);
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .dot-item.dot-animated {
@@ -232,11 +253,12 @@ onUnmounted(() => {
 }
 
 .inner-dot {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: white;
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .dot-item:hover .inner-dot {
@@ -305,6 +327,21 @@ onUnmounted(() => {
 .image-container {
     width: 100%;
     max-width: 500px;
+    position: relative;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    border-radius: 1.5rem;
+    z-index: -1;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 }
 
 .timeline-image {
@@ -312,18 +349,34 @@ onUnmounted(() => {
     height: 250px;
     object-fit: cover;
     border-radius: 1.5rem;
-    box-shadow: 15px 15px 0 var(--dark-blue);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .timeline-image:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 20px 20px 0 var(--dark-blue);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .text-content {
     width: 100%;
     max-width: 500px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.text-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.3);
 }
 
 .text-end {
@@ -334,48 +387,52 @@ onUnmounted(() => {
     text-align: left;
 }
 
-.year {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: var(--dark-blue);
-    margin-bottom: 0.8rem;
-    position: relative;
+.year-badge {
     display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    position: relative;
 }
 
-.text-end .year::after {
+.text-end .year-badge::after {
     content: '';
     position: absolute;
     bottom: -8px;
     right: 0;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--blue), var(--dark-blue));
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
     border-radius: 2px;
 }
 
-.text-start .year::after {
+.text-start .year-badge::after {
     content: '';
     position: absolute;
     bottom: -8px;
     left: 0;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--dark-blue), var(--blue));
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
     border-radius: 2px;
 }
 
 .title {
     font-size: 1.6rem;
     font-weight: bold;
-    color: var(--blue);
+    color: white;
     margin-bottom: 1.2rem;
     line-height: 1.3;
 }
 
 .description {
     line-height: 1.7;
-    color: #4a5568;
+    color: #cbd5e1;
     font-size: 1.1rem;
     text-align: justify;
 }
@@ -393,7 +450,7 @@ onUnmounted(() => {
 /* Animations */
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6);
     }
 
     70% {
@@ -440,15 +497,16 @@ onUnmounted(() => {
 /* Tablet */
 @media (max-width: 768px) {
     .timeline-image {
-        display: none;
+        display: block;
     }
-
+    
     .timeline-container {
         padding: 2rem 1rem;
     }
 
     .timeline-line {
-        display: none;
+        display: block;
+        left: 30px;
     }
 
     .dots-container {
@@ -461,7 +519,7 @@ onUnmounted(() => {
 
     .timeline-item {
         margin-bottom: 120px;
-        padding: 0;
+        padding: 0 0 0 60px;
         min-height: auto;
     }
 
@@ -482,8 +540,8 @@ onUnmounted(() => {
         text-align: center !important;
     }
 
-    .text-end .year::after,
-    .text-start .year::after {
+    .text-end .year-badge::after,
+    .text-start .year-badge::after {
         left: 50%;
         transform: translateX(-50%);
         right: auto;
@@ -521,12 +579,16 @@ onUnmounted(() => {
         height: 200px;
     }
 
-    .year {
-        font-size: 2.2rem;
+    .year-badge {
+        font-size: 1rem;
     }
 
     .title {
         font-size: 1.4rem;
+    }
+    
+    .text-content {
+        padding: 1.5rem;
     }
 }
 </style>

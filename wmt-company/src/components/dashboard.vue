@@ -1,5 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCards, Mousewheel, Autoplay, Navigation, Pagination } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+import 'swiper/css/autoplay'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 import slider1 from '../assets/img/slider-1.png'
 import slider2 from '../assets/img/slider-2.png'
 import slider3 from '../assets/img/slider-3.png'
@@ -22,27 +32,37 @@ const techContents = [
     {
         title: "Milling 5 AXIS",
         description: "Advanced 5-Axis CNC machining delivers unmatched precision and flexibility, enabling complex parts to be produced in a single setup",
-        imageIndex: 0
+        imageIndex: 0,
+        features: ["Simultaneous 5-axis machining", "Complex geometry capabilities", "Reduced setup time", "Superior surface finish"],
+        icon: "precision_manufacturing"
     },
     {
         title: "CNC Turning",
         description: "High-precision turning operations for cylindrical parts with superior surface finish and dimensional accuracy",
-        imageIndex: 1
+        imageIndex: 1,
+        features: ["Live tooling capabilities", "Automatic bar feeding", "Multi-axis turning", "In-process gauging"],
+        icon: "settings"
     },
     {
         title: "EDM Machining",
         description: "Electrical Discharge Machining for complex geometries and hard materials that are difficult to machine conventionally",
-        imageIndex: 2
+        imageIndex: 2,
+        features: ["Wire EDM precision cutting", "Sinker EDM for complex cavities", "Hard material processing", "Mirror surface finish"],
+        icon: "flash_on"
     },
     {
         title: "Quality Inspection",
         description: "Comprehensive metrology and quality control using advanced CMM and measurement equipment",
-        imageIndex: 3
+        imageIndex: 3,
+        features: ["3D CMM scanning", "Optical measurement systems", "Surface roughness analysis", "Statistical process control"],
+        icon: "search"
     },
     {
         title: "Surface Treatment",
         description: "Various surface finishing processes including anodizing, plating, and coating for enhanced durability",
-        imageIndex: 4
+        imageIndex: 4,
+        features: ["Hard anodizing", "Electroless nickel plating", "PVD coating", "Passivation treatments"],
+        icon: "layers"
     }
 ]
 
@@ -53,6 +73,70 @@ const menuOpen = ref(false)
 // State untuk dropdown
 const companyDropdownOpen = ref(false)
 const servicesDropdownOpen = ref(false)
+
+// State untuk technology swiper
+const techSwiper = ref(null)
+const activeTechIndex = ref(0)
+
+// State untuk scroll button
+const currentSection = ref('about-us')
+const showScrollButton = ref(true)
+
+// Swiper modules
+const modules = [EffectCards, Mousewheel, Autoplay, Navigation, Pagination]
+
+// Data untuk services cards
+const serviceCards = [
+    {
+        title: "Precision Part",
+        description: "High-precision machining and manufacturing of complex components with tight tolerances",
+        icon: "architecture",
+        features: ["CNC Machining", "Quality Control", "Custom Solutions"],
+        height: "h-130"
+    },
+    {
+        title: "Plastic Injection",
+        description: "High-quality plastic injection molding for durable and precision-engineered parts",
+        icon: "polymer",
+        features: ["Custom Mold Design", "Mass Production", "Surface Finishing"],
+        height: "h-130"
+    },
+    {
+        title: "Mold & Dies",
+        description: "Design and fabrication of high-precision molds and dies for industrial applications",
+        icon: "extension",
+        features: ["Tool Design", "Die Manufacturing", "Maintenance & Repair"],
+        height: "h-130"
+    },
+    {
+        title: "Medical Part",
+        description: "Manufacturing of precision components for medical and healthcare equipment",
+        icon: "ecg_heart",
+        features: ["Biocompatible Materials", "Cleanroom Production", "Regulatory Compliance"],
+        height: "h-130"
+    },
+    {
+        title: "Turbine Part",
+        description: "Precision manufacturing of turbine components for energy and aerospace industries",
+        icon: "mode_fan",
+        features: ["High-Temperature Alloys", "Aerodynamic Design", "Performance Testing"],
+        height: "h-130"
+    },
+    {
+        title: "Rubber Part",
+        description: "Custom rubber parts for automotive, industrial, and consumer applications",
+        icon: "eraser_size_3",
+        features: ["Molded Rubber Components", "Durability Testing", "Material Optimization"],
+        height: "h-130"
+    },
+    {
+        title: "Specialized Manufacturing",
+        description: "Tailored manufacturing solutions for unique and complex requirements across various industries",
+        icon: "precision_manufacturing",
+        features: ["Prototype Development", "Small Batch Production", "Technical Consultation"],
+        height: "h-130"
+    }
+]
 
 const nextSlide = () => {
     currentIndex.value = (currentIndex.value + 1) % totalSlides
@@ -85,71 +169,219 @@ const closeServiceDropdown = () => {
     servicesDropdownOpen.value = false
 }
 
+// Function untuk mengatur active technology index
+const onTechSwiper = (swiper) => {
+    techSwiper.value = swiper
+}
+
+const onTechSlideChange = (swiper) => {
+    activeTechIndex.value = swiper.activeIndex
+}
+
+// Function untuk smooth scroll ke section
+const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+        currentSection.value = sectionId
+    }
+}
+
+// Function untuk scroll ke next section
+const scrollToNextSection = () => {
+    const sections = ['about-us', 'service', 'technology']
+    const currentIndex = sections.indexOf(currentSection.value)
+    const nextIndex = (currentIndex + 1) % sections.length
+    scrollToSection(sections[nextIndex])
+}
+
+// Function untuk detect current section saat scroll
+const handleScroll = () => {
+    const sections = ['about-us', 'service', 'technology']
+    const scrollPosition = window.scrollY + 100
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section && scrollPosition >= section.offsetTop) {
+            currentSection.value = sections[i]
+            break
+        }
+    }
+}
+
+// Swiper configuration untuk services
+const swiperOptions = {
+    modules: [EffectCards, Mousewheel, Autoplay],
+    effect: 'cards',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    loop: true,
+    mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+    },
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
+    cardsEffect: {
+        slideShadows: false,
+        rotate: true,
+        perSlideOffset: 18,
+        perSlideRotate: 5,
+    },
+    breakpoints: {
+        320: {
+            cardsEffect: {
+                perSlideOffset: 10,
+                perSlideRotate: 3,
+            }
+        },
+        768: {
+            cardsEffect: {
+                perSlideOffset: 15,
+                perSlideRotate: 4,
+            }
+        },
+        1024: {
+            cardsEffect: {
+                perSlideOffset: 18,
+                perSlideRotate: 5,
+            }
+        }
+    }
+}
+
+// Swiper configuration untuk technology - DIPERBAIKI
+const techSwiperOptions = {
+    modules: [Navigation, Pagination, Mousewheel, Autoplay],
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 800,
+    mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+    },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.tech-swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+    },
+    navigation: {
+        nextEl: '.tech-swiper-button-next',
+        prevEl: '.tech-swiper-button-prev',
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+        },
+        1024: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+        }
+    },
+    on: {
+        slideChange: onTechSlideChange
+    }
+}
 
 onMounted(() => {
     setInterval(nextSlide, 5000)
+    window.addEventListener('scroll', handleScroll)
 
-    // Observer untuk svgGroup
-    const svgGroup = document.getElementById('svgGroup')
-    const items = svgGroup.querySelectorAll('.fade-item')
+    // Set initial section
+    const aboutSection = document.getElementById('about-us')
+    if (aboutSection) {
+        currentSection.value = 'about-us'
+    }
+})
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                items.forEach(item => item.classList.add('visible'))
-            } else {
-                items.forEach(item => item.classList.remove('visible'))
-            }
-        })
-    }, {
-        threshold: 0.2
-    })
-
-    observer.observe(svgGroup)
-
-    // Observer untuk svgGroup-Tech
-    const svgGroupTech = document.getElementById('svgGroup-Tech')
-    const itemsTech = svgGroupTech.querySelectorAll('.fade-item')
-
-    const observerTech = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                itemsTech.forEach(item => item.classList.add('visible'))
-            } else {
-                itemsTech.forEach(item => item.classList.remove('visible'))
-            }
-        })
-    }, {
-        threshold: 0.2
-    })
-
-    observerTech.observe(svgGroupTech)
-
-    // Observer untuk svgGroup-Footer
-    const svgGroupFooter = document.getElementById('svgGroup-Footer')
-    const footerItems = svgGroupFooter.querySelectorAll('.fade-item')
-
-    const footerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                footerItems.forEach(item => item.classList.add('visible'))
-            } else {
-                footerItems.forEach(item => item.classList.remove('visible'))
-            }
-        })
-    }, {
-        threshold: 0.2
-    })
-
-    footerObserver.observe(svgGroupFooter)
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
 <template>
     <div class="w-full h-fit flex flex-col">
+        <!-- Slider -->
+        <div class="slider relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[100vh] overflow-hidden">
+            <div class="img-content flex transition-transform duration-700 ease-in-out"
+                :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+                <div class="relative min-w-full h-full" v-for="(img, index) in slides" :key="index">
+                    <img class="w-full h-full object-cover" :src="img" :alt="`slider-${index + 1}`" />
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+            </div>
+
+            <!-- Overlay Content -->
+            <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white z-10 px-4">
+                <div class="content flex flex-row items-center justify-between w-full px-4 md:px-10">
+                    <!-- Prev -->
+                    <button @click="prevSlide"
+                        class="slider-button bg-white/20 hidden md:flex justify-center items-center hover:bg-white/30 p-2 md:p-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110">
+                        <span class="material-symbols-outlined text-2xl md:text-3xl">chevron_left</span>
+                    </button>
+
+                    <!-- Text -->
+                    <div class="text-content text-center flex flex-col justify-center items-center">
+                        <h1 class="xl:text-9xl sm:text-5xl md:text-6xl font-bold mb-2">
+                            WAFIQ MITRA TEKNIK
+                        </h1>
+                        <p class="text-xs sm:text-sm md:text-base max-w-xl">
+                            A trusted partner for CNC machining services and high-quality plastic products,
+                            with a strong commitment to on-time delivery
+                        </p>
+                        <!-- <div class="link-group flex flex-row flex-wrap justify-center gap-3 mt-5">
+                            <a class="link-button font-bold px-4 py-2 sm:px-5 sm:py-2 w-32 sm:w-36 rounded-full text-center transition-all duration-300 hover:scale-105"
+                                href="#">Contact Us</a>
+                            <a class="link-button font-bold px-4 py-2 sm:px-5 sm:py-2 w-32 sm:w-36 rounded-full text-center transition-all duration-300 hover:scale-105"
+                                href="#">About Us</a>
+                        </div> -->
+                    </div>
+
+                    <!-- Next -->
+                    <button @click="nextSlide"
+                        class="slider-button bg-white/20 hidden md:flex justify-center items-center hover:bg-white/30 p-2 md:p-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110">
+                        <span class="material-symbols-outlined text-2xl md:text-3xl">chevron_right</span>
+                    </button>
+                </div>
+
+                <!-- Indicator -->
+                <div
+                    class="bg-white/20 absolute bottom-3 sm:bottom-5 px-3 py-2 rounded-full flex justify-center gap-2 backdrop-blur-sm">
+                    <span v-for="(n, index) in totalSlides" :key="index"
+                        class="w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300"
+                        :class="currentIndex === index ? 'bg-white scale-125' : 'bg-white/50'"></span>
+                </div>
+            </div>
+        </div>
+        <!-- Fixed Scroll Button -->
+        <button @click="scrollToNextSection"
+            class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[var(--blue)] hover:bg-[var(--deep-blue)] rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 group scroll-button"
+            :class="{
+                'rotate-180': currentSection === 'technology'
+            }">
+            <span class="material-symbols-outlined text-white transition-transform duration-300 group-hover:scale-110">
+                expand_more
+            </span>
+        </button>
+
         <!-- Content -->
         <section id="about-us"
-            class="w-full min-h-screen flex flex-col xl:flex-row items-center xl:items-center justify-center xl:justify-between gap-12 px-6 md:px-12 xl:px-24 py-16 bg-white">
+            class="w-full h-fit flex flex-col xl:flex-row items-center xl:items-center justify-center xl:justify-between gap-12 px-6 md:px-12 xl:px-24 py-20 bg-[var(--dark-blue)]">
             <!-- LEFT CONTENT -->
             <div class="content-text flex-1 max-w-xl flex flex-col gap-6">
                 <h3
@@ -158,12 +390,12 @@ onMounted(() => {
                 </h3>
 
                 <div class="flex flex-col gap-2">
-                    <h1 class="font-bold text-[var(--dark-blue)] text-3xl md:text-4xl xl:text-5xl">Shaping Precision
+                    <h1 class="font-bold text-[var(--white)] text-3xl md:text-4xl xl:text-5xl">Shaping Precision
                     </h1>
                     <h1 class="font-bold text-[var(--blue)] text-3xl md:text-4xl xl:text-5xl">Delivering Quality</h1>
                 </div>
 
-                <p class="text-[var(--gray-dark)] text-justify leading-relaxed text-sm md:text-base">
+                <p class="text-[var(--white)] text-justify leading-relaxed text-sm md:text-base">
                     With over 20 years of expertise in CNC machining, molds & dies, and plastic manufacturing, PT Wafiq
                     Mitra Teknik has grown into a trusted partner for industries seeking precision, innovation, and
                     reliability. Our modern facilities and skilled team enable us to deliver complex, high-quality
@@ -173,20 +405,20 @@ onMounted(() => {
 
                 <div class="flex flex-row justify-between items-center mt-4">
                     <div>
-                        <h1 class="text-[var(--dark-blue)] font-bold text-xl md:text-2xl">ISO 9001</h1>
-                        <p class="text-[var(--gray-dark)] text-sm md:text-base">Certified Quality Management</p>
+                        <h1 class="text-[var(--blue)] font-bold text-xl md:text-2xl">ISO 9001</h1>
+                        <p class="text-[var(--white)] text-sm md:text-base">Certified Quality Management</p>
                     </div>
                     <div>
-                        <h1 class="text-[var(--dark-blue)] font-bold text-xl md:text-2xl">24/7</h1>
-                        <p class="text-[var(--gray-dark)] text-sm md:text-base">Customer Support</p>
+                        <h1 class="text-[var(--blue)] font-bold text-xl md:text-2xl">24/7</h1>
+                        <p class="text-[var(--white)] text-sm md:text-base">Customer Support</p>
                     </div>
                 </div>
             </div>
 
             <!-- RIGHT CARDS -->
-            <div class="content-card flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+            <div class="content-card flex-1 grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-2xl">
                 <div
-                    class="card p-6 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">shield</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Quality Assurance</h1>
@@ -195,7 +427,7 @@ onMounted(() => {
                 </div>
 
                 <div
-                    class="card p-6 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">workspace_premium</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Industry Excellence</h1>
@@ -204,7 +436,7 @@ onMounted(() => {
                 </div>
 
                 <div
-                    class="card p-6 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">group</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Expert Team</h1>
@@ -213,7 +445,7 @@ onMounted(() => {
                 </div>
 
                 <div
-                    class="card p-6 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">target</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Precision Focus</h1>
@@ -222,239 +454,217 @@ onMounted(() => {
                 </div>
             </div>
         </section>
-        <section id="service" class="relative w-full h-fit flex flex-col overflow-hidden px-15 py-15">
-            <div id="svgGroup" class="fade-group">
-                <img class="fade-item rec-1 absolute z-10 top-0 left-0" src="../assets/svg/rec_1.svg" alt="">
-                <img class="fade-item rec-2 absolute z-0 top-0 left-0" src="../assets/svg/rec_2.svg" alt="">
-                <img class="fade-item rec-3 absolute z-10 top-0 right-0" src="../assets/svg/rec_3.svg" alt="">
-                <img class="fade-item rec-4 absolute z-0 top-0 right-0" src="../assets/svg/rec_4.svg" alt="">
-            </div>
-            <div class="content flex flex-col items-center justify-center z-20">
-                <div class="text-group flex flex-col items-center jusstify-center gap-5 ">
+
+        <!-- SECTION SERVICE DENGAN SWIPER YANG DIPERBAIKI -->
+        <section id="service"
+            class="relative w-full min-h-screen flex items-center justify-center py-20 bg-gradient-to-b from-[var(--dark-blue)] to-[var(--footer-dark)] overflow-hidden">
+            <div class="content flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6">
+                <div class="text-group flex flex-col items-center justify-center gap-5 mb-16 text-center">
                     <h3
                         class="p-3 bg-[var(--blue-transparent)] w-fit text-[var(--blue)] font-bold rounded-full text-sm md:text-base">
                         About Our Services
                     </h3>
 
-                    <div class="flex flex-col gap-2 items-center justify-center">
-                        <h1 class="font-bold text-[var(--dark-blue)] text-3xl md:text-4xl xl:text-5xl">Comprehensive
-                            Manufacturing
-                        </h1>
-                        <h1 class="font-bold text-[var(--blue)] text-3xl md:text-4xl xl:text-5xl">Solution
-                        </h1>
-                        <p class="text-lg text-[var(--gray-dark)] w-200 text-center">From precision machining to
+                    <div class="flex flex-col gap-4 items-center justify-center">
+                        <h1 class="font-bold text-[var(--white)] text-4xl md:text-5xl xl:text-6xl leading-tight">
+                            Comprehensive Manufacturing</h1>
+                        <h1 class="font-bold text-[var(--blue)] text-4xl md:text-5xl xl:text-6xl leading-tight">
+                            Solutions</h1>
+                        <p class="text-xl text-[var(--white)] max-w-4xl leading-relaxed">From precision machining to
                             specialized manufacturing, we offer a complete range of services to meet your most demanding
                             requirements</p>
                     </div>
                 </div>
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:w-300 gap-6 p-10 w-full justify-items-center">
-                    <!-- Precision Part -->
-                    <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">architecture</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Precision Part</h1>
-                            <p class="text-[var(--white)] text-sm">High-precision machining and manufacturing of complex
-                                components with
-                                tight tolerances</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">CNC Machining</li>
-                                <li class="list-card">Quality Control</li>
-                                <li class="list-card">Custom Solutions</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
-                    </div>
 
-                    <!-- Plastic Injection -->
+                <!-- Swiper Container yang diperbaiki -->
+                <div class="w-full max-w-6xl h-120 md:h-140 relative flex justify-center items-center overflow-visible">
                     <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">polymer</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Plastic Injection</h1>
-                            <p class="text-[var(--white)] text-sm">High-quality plastic injection molding for durable
-                                and
-                                precision-engineered parts</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">Custom Mold Design</li>
-                                <li class="list-card">Mass Production</li>
-                                <li class="list-card">Surface Finishing</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
-                    </div>
-
-                    <!-- Mold & Dies -->
-                    <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">extension</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Mold & Dies</h1>
-                            <p class="text-[var(--white)] text-sm">Design and fabrication of high-precision molds and
-                                dies for industrial
-                                applications</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">Tool Design</li>
-                                <li class="list-card">Die Manufacturing</li>
-                                <li class="list-card">Maintenance & Repair</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
-                    </div>
-
-                    <!-- Medical Part -->
-                    <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">ecg_heart</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Medical Part</h1>
-                            <p class="text-[var(--white)] text-sm">Manufacturing of precision components for medical and
-                                healthcare
-                                equipment</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">Biocompatible Materials</li>
-                                <li class="list-card">Cleanroom Production</li>
-                                <li class="list-card">Regulatory Compliance</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
-                    </div>
-
-                    <!-- Turbine Part -->
-                    <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">mode_fan</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Turbine Part</h1>
-                            <p class="text-[var(--white)] text-sm">Precision manufacturing of turbine components for
-                                energy and aerospace
-                                industries</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">High-Temperature Alloys</li>
-                                <li class="list-card">Aerodynamic Design</li>
-                                <li class="list-card">Performance Testing</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
-                    </div>
-
-                    <!-- Rubber Part -->
-                    <div
-                        class="card relative w-full max-w-sm h-130 flex flex-col p-10 items-start justify-between bg-[var(--dark-blue)] rounded-2xl">
-                        <div class="text-group flex flex-col gap-1">
-                            <span
-                                class="material-symbols-outlined text-[var(--deep-blue)] p-5 bg-[var(--white)] icon-service w-fit rounded-2xl">eraser_size_3</span>
-                            <h1 class="text-2xl font-bold text-[var(--white)] mt-4">Rubber Part</h1>
-                            <p class="text-[var(--white)] text-sm">Custom rubber parts for automotive, industrial, and
-                                consumer
-                                applications</p>
-                            <ul class="list-disc list-inside marker:text-[var(--blue)]">
-                                <li class="list-card">Molded Rubber Components</li>
-                                <li class="list-card">Durability Testing</li>
-                                <li class="list-card">Material Optimization</li>
-                            </ul>
-                        </div>
-                        <a href="#"
-                            class="w-1/2 z-20 text-center px-3 py-5 rounded-2xl font-bold text-xl text-[var(--dark-blue)] bg-[var(--white)]">Detail</a>
-                        <img src="../assets/svg/rec_5.svg" alt="rec-5" class="z-0 absolute -bottom-1.5 -right-2.5">
+                        class="swiper-container-wrapper w-full h-full flex justify-center items-center overflow-visible">
+                        <Swiper v-bind="swiperOptions" class="services-swiper h-full mx-auto">
+                            <SwiperSlide v-for="(service, index) in serviceCards" :key="index"
+                                class="flex items-center justify-center overflow-visible">
+                                <div
+                                    :class="['service-card relative w-80 md:w-96 flex flex-col p-8 items-start justify-between bg-[var(--dark-blue)] rounded-3xl border-2 border-[var(--blue-transparent)] backdrop-blur-sm transition-all duration-500 transform', service.height]">
+                                    <div class="text-group flex flex-col gap-4 z-20 w-full">
+                                        <div class="flex items-center gap-4">
+                                            <span
+                                                class="material-symbols-outlined text-[var(--deep-blue)] p-4 bg-[var(--white)] icon-service w-fit rounded-2xl shadow-lg">
+                                                {{ service.icon }}
+                                            </span>
+                                            <h1 class="text-2xl md:text-3xl font-bold text-[var(--white)]">{{
+                                                service.title }}</h1>
+                                        </div>
+                                        <p class="text-[var(--white)] text-base leading-relaxed">{{ service.description
+                                            }}</p>
+                                        <ul class="list-none space-y-2">
+                                            <li v-for="(feature, featureIndex) in service.features" :key="featureIndex"
+                                                class="list-card text-sm md:text-base flex items-center gap-3">
+                                                <div class="w-2 h-2 bg-[var(--blue)] rounded-full"></div>
+                                                {{ feature }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <img src="../assets/svg/rec_5.svg" alt="rec-5"
+                                        class="z-0 absolute -bottom-2 -right-2 w-40 md:w-48 opacity-80">
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
                     </div>
                 </div>
-            </div>
-            <div id="svgGroup-Footer" class="fade-group">
-                <img class="fade-item fade-from-bottom rec-6 absolute z-10 bottom-0 left-0"
-                    src="../assets/svg/rec_6.svg" alt="">
-                <img class="fade-item fade-from-bottom rec-7 absolute z-0 bottom-0 left-0" src="../assets/svg/rec_7.svg"
-                    alt="">
-                <img class="fade-item fade-from-bottom rec-8 absolute z-10 bottom-0 right-0"
-                    src="../assets/svg/rec_8.svg" alt="">
-                <img class="fade-item fade-from-bottom rec-9 absolute z-0 bottom-0 right-0"
-                    src="../assets/svg/rec_9.svg" alt="">
+
+                <!-- Instruction text -->
+                <div class="mt-12 text-center">
+                    <p
+                        class="text-[var(--white)] text-lg opacity-70 flex items-center justify-center gap-2 instruction-pulse">
+                        <span class="material-symbols-outlined text-sm">swipe</span>
+                        Drag to explore our services
+                    </p>
+                </div>
             </div>
         </section>
-        <section id="technology" class="relative w-full h-720 flex flex-col overflow-hidden px-15 py-30">
-            <div id="svgGroup-Tech" class="fade-group">
-                <img class="fade-item rec-10 absolute z-10 top-0 left-0" src="../assets/svg/rec_10.svg" alt="">
-                <img class="fade-item rec-11 absolute z-0 top-0 left-0" src="../assets/svg/rec_11.svg" alt="">
-                <img class="fade-item rec-12 absolute z-10 top-0 right-0" src="../assets/svg/rec_12.svg" alt="">
-                <img class="fade-item rec-13 absolute z-0 top-0 right-0" src="../assets/svg/rec_13.svg" alt="">
+
+        <!-- SECTION TECHNOLOGY DENGAN SWIPER YANG BISA DIGESER -->
+        <section id="technology"
+            class="relative w-full min-h-screen flex items-center justify-center py-20 bg-gradient-to-b from-[var(--footer-dark)] to-[var(--black-blue)] overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden z-0">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+                <div class="floating-shape shape-4"></div>
             </div>
-            <div class="content flex flex-col w-full h-full items-center justify-center">
-                <div v-for="(tech, index) in techContents" :key="index"
-                    class="conten-col flex flex-row items-center justify-between gap-25 w-fit h-1/5">
 
-                    <template v-if="index % 2 === 0">
-                        <!-- Gambar di kiri -->
-                        <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
-                            <div class="reveal-box box1">
-                                <div class="reveal-inner"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                            <div class="reveal-box box2">
-                                <div class="reveal-inner"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                            <div class="reveal-box box3">
-                                <div class="reveal-inner"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                        </div>
-                        <div class="text-group">
-                            <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
-                            }}</h1>
-                            <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
-                        </div>
-                    </template>
-
-                    <template v-else>
-                        <!-- Teks di kiri -->
-                        <div class="text-group">
-                            <h1 class="decoration-solid text-3xl font-bold text-[var(--dark-blue)] w-100">{{ tech.title
-                            }}</h1>
-                            <p class="text-[var(--gray)] w-90 text-justify">{{ tech.description }}</p>
-                        </div>
-                        <!-- Gambar di kanan -->
-                        <div class="relative w-full h-full flex flex-row gap-5 justify-between items-center">
-                            <div class="reveal-box-right box1-right">
-                                <div class="reveal-inner-right"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                            <div class="reveal-box-right box2-right">
-                                <div class="reveal-inner-right"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                            <div class="reveal-box-right box3-right">
-                                <div class="reveal-inner-right"
-                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }"></div>
-                            </div>
-                        </div>
-                    </template>
+            <div
+                class="content flex flex-col w-full h-full items-center justify-center gap-12 md:gap-16 relative z-10 max-w-7xl mx-auto px-6">
+                <!-- Header Section -->
+                <div class="text-center max-w-4xl mx-auto">
+                    <h3
+                        class="p-3 bg-[var(--blue-transparent)] w-fit mx-auto text-[var(--blue)] font-bold rounded-full text-sm md:text-base mb-6">
+                        Advanced Technology
+                    </h3>
+                    <h1 class="font-bold text-[var(--white)] text-3xl md:text-4xl xl:text-5xl mb-4">
+                        Cutting-Edge Manufacturing
+                    </h1>
+                    <h1 class="font-bold text-[var(--blue)] text-3xl md:text-4xl xl:text-5xl mb-6">
+                        Technologies
+                    </h1>
+                    <p class="text-[var(--white)] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        Discover our advanced manufacturing technologies that deliver precision, quality, and innovation
+                    </p>
                 </div>
-            </div>
-            <div id="svgGroup-Footer-Tech" class="fade-group">
-                <img class="fade-item fade-from-bottom rec-6 absolute z-10 bottom-0 left-0"
-                    src="../assets/svg/rec_6.svg" alt="">
-                <img class="fade-item fade-from-bottom rec-7 absolute z-0 bottom-0 left-0" src="../assets/svg/rec_7.svg"
-                    alt="">
-                <img class="fade-item fade-from-bottom rec-8 absolute z-10 bottom-0 right-0"
-                    src="../assets/svg/rec_8.svg" alt="">
-                <img class="fade-item fade-from-bottom rec-9 absolute z-0 bottom-0 right-0"
-                    src="../assets/svg/rec_9.svg" alt="">
+
+                <!-- Technology Swiper Container -->
+                <div class="w-full max-w-6xl relative">
+                    <!-- Navigation Buttons - POSISI DIPERBAIKI -->
+                    <div
+                        class="tech-swiper-button-prev absolute xl:-left-50 md:left-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
+                        <span
+                            class="material-symbols-outlined text-[var(--white)] text-lg md:text-xl">chevron_left</span>
+                    </div>
+
+                    <div
+                        class="tech-swiper-button-next absolute xl:-right-50 md:right-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
+                        <span
+                            class="material-symbols-outlined text-[var(--white)] text-lg md:text-xl">chevron_right</span>
+                    </div>
+
+                    <!-- Swiper Container -->
+                    <div class="w-full h-[600px] md:h-[700px] px-8 md:px-12">
+                        <Swiper v-bind="techSwiperOptions" @swiper="onTechSwiper" class="tech-swiper h-full">
+                            <SwiperSlide v-for="(tech, index) in techContents" :key="index"
+                                class="flex items-center justify-center">
+                                <div
+                                    class="tech-slide-content w-full h-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 p-4 md:p-6">
+                                    <!-- Image Section -->
+                                    <div
+                                        class="image-section flex-1 flex justify-center md:justify-start order-2 md:order-1">
+                                        <div
+                                            class="relative w-full max-w-lg h-80 md:h-96 flex flex-row gap-4 md:gap-6 justify-center items-center">
+                                            <div class="reveal-box box1" :class="{ 'active': activeTechIndex === index }">
+                                                <div class="reveal-inner"
+                                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }">
+                                                </div>
+                                                <div class="reveal-overlay"></div>
+                                            </div>
+                                            <div class="reveal-box box2" :class="{ 'active': activeTechIndex === index }">
+                                                <div class="reveal-inner"
+                                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }">
+                                                </div>
+                                                <div class="reveal-overlay"></div>
+                                            </div>
+                                            <div class="reveal-box box3" :class="{ 'active': activeTechIndex === index }">
+                                                <div class="reveal-inner"
+                                                    :style="{ backgroundImage: getTechBackground(tech.imageIndex) }">
+                                                </div>
+                                                <div class="reveal-overlay"></div>
+                                            </div>
+                                            <div class="tech-glow"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Text Content Section -->
+                                    <div class="text-section flex-1 max-w-xl order-1 md:order-2">
+                                        <div
+                                            class="text-content bg-gradient-to-br from-[var(--dark-blue)] to-[var(--black-blue)] bg-opacity-80 p-6 md:p-8 rounded-3xl border border-[var(--blue-transparent)] backdrop-blur-lg shadow-2xl">
+                                            <div class="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                                                <span
+                                                    class="material-symbols-outlined text-[var(--blue)] text-2xl md:text-4xl bg-[var(--blue-transparent)] p-2 md:p-3 rounded-2xl">
+                                                    {{ tech.icon }}
+                                                </span>
+                                                <h1 class="text-2xl md:text-4xl font-bold text-[var(--blue)]">{{
+                                                    tech.title }}</h1>
+                                            </div>
+
+                                            <p
+                                                class="text-[var(--white)] text-base md:text-xl leading-relaxed mb-6 md:mb-8">
+                                                {{ tech.description }}
+                                            </p>
+
+                                            <div class="features-grid grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                                                <div v-for="(feature, featureIndex) in tech.features"
+                                                    :key="featureIndex"
+                                                    class="feature-item flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-xl bg-[var(--blue-transparent)] bg-opacity-30 transition-all duration-300 hover:bg-opacity-50 border border-[var(--blue-transparent)]">
+                                                    <div
+                                                        class="w-2 h-2 md:w-3 md:h-3 bg-[var(--blue)] rounded-full flex-shrink-0">
+                                                    </div>
+                                                    <span class="text-[var(--white)] text-sm md:text-base">{{ feature
+                                                        }}</span>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-[var(--blue-transparent)]">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-[var(--blue)] text-xs md:text-sm font-semibold">
+                                                        Technology {{ index + 1 }}/{{ techContents.length }}
+                                                    </span>
+                                                    <div class="flex gap-1 md:gap-2">
+                                                        <div v-for="i in techContents.length" :key="i"
+                                                            :class="['w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-300', i - 1 === activeTechIndex ? 'bg-[var(--blue)]' : 'bg-[var(--blue-transparent)]']">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="tech-swiper-pagination mt-6 md:mt-8 flex justify-center"></div>
+                </div>
+
+                <!-- Instruction Text -->
+                <div class="text-center mt-6 md:mt-8">
+                    <p
+                        class="text-[var(--white)] text-base md:text-lg opacity-70 flex items-center justify-center gap-2 md:gap-3 instruction-pulse">
+                        <span class="material-symbols-outlined text-sm">swipe</span>
+                        Swipe or use navigation to explore technologies
+                        <span class="material-symbols-outlined text-sm">touch_app</span>
+                    </p>
+                </div>
             </div>
         </section>
     </div>
@@ -474,7 +684,6 @@ onMounted(() => {
 
 .card {
     cursor: pointer;
-    box-shadow: 0 0 10px var(--blue);
     transition: all 0.3s ease-in-out;
 }
 
@@ -484,91 +693,208 @@ onMounted(() => {
 
 .icon-service {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--blue);
+    transform: translateY(-5px);
 }
 
-.fade-item {
-    opacity: 0;
-    transform: translateY(-40px);
-    transition: all 0.8s ease-out;
+/* Fixed Scroll Button */
+.scroll-button {
+    animation: float 3s ease-in-out infinite;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.fade-item.visible {
-    opacity: 1;
-    transform: translateY(0);
+.scroll-button:hover {
+    animation: none;
+    transform: scale(1.1);
 }
 
-.fade-from-bottom {
-    transform: translateY(40px);
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
-.fade-from-bottom.visible {
-    transform: translateY(0);
+/* Technology Section Styles */
+#technology {
+    background: linear-gradient(135deg, var(--footer-dark) 0%, var(--black-blue) 50%, var(--dark-blue) 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-.rec-1.visible {
-    transition-delay: 0s;
+/* Floating Background Shapes */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--blue-transparent) 0%, transparent 70%);
+    animation: shapeFloat 15s infinite ease-in-out;
+    z-index: 0;
 }
 
-.rec-3.visible {
-    transition-delay: 0s;
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
 }
 
-.rec-2.visible {
-    transition-delay: 0.3s;
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 10%;
+    animation-delay: 5s;
 }
 
-.rec-4.visible {
-    transition-delay: 0.3s;
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 10s;
 }
 
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    top: 30%;
+    right: 20%;
+    animation-delay: 7s;
+}
+
+@keyframes shapeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    33% {
+        transform: translateY(-20px) rotate(120deg);
+        opacity: 0.5;
+    }
+
+    66% {
+        transform: translateY(10px) rotate(240deg);
+        opacity: 0.4;
+    }
+}
+
+/* Tech Swiper Styles */
+.tech-swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.tech-slide-content {
+    padding: 20px;
+}
+
+.text-content {
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.tech-swiper-button-prev:hover,
+.tech-swiper-button-next:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Improved Reveal Box Styles */
 .reveal-box {
     position: relative;
-    width: 200px;
-    height: 320px;
+    width: 160px;
+    height: 280px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.reveal-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
 }
 
 .box1 {
     cursor: pointer;
-    top: -100px;
-    transition: all 0.3s ease-in-out;
+    top: -40px;
+    z-index: 3;
+    transform: rotateY(-8deg) translateZ(20px);
 }
 
 .box2 {
     cursor: pointer;
-    top: -50px;
-    transition: all 0.3s ease-in-out;
+    top: -20px;
+    z-index: 2;
+    transform: rotateY(0deg) translateZ(10px);
 }
 
 .box3 {
     cursor: pointer;
-    top: 10px;
-    transition: all 0.3s ease-in-out;
+    top: 0px;
+    z-index: 1;
+    transform: rotateY(8deg) translateZ(0px);
 }
 
-.box1:hover,
-.box2:hover,
-.box3:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    transform: scale(1.05);
+.reveal-box.active {
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
+}
+
+.reveal-box:hover {
+    box-shadow: 0 30px 60px rgba(59, 130, 246, 0.6);
+    transform: scale(1.12) translateZ(30px);
+    z-index: 10;
+}
+
+.reveal-box:hover .reveal-overlay {
+    opacity: 1;
 }
 
 .reveal-inner {
     position: absolute;
     top: -60px;
-    width: 900px;
-    height: 520px;
+    width: 800px;
+    height: 480px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     opacity: 1;
     pointer-events: none;
+    transition: transform 0.6s ease;
 }
 
 .box1 .reveal-inner {
@@ -577,113 +903,414 @@ onMounted(() => {
 }
 
 .box2 .reveal-inner {
-    left: -240px;
+    left: -220px;
 }
 
 .box3 .reveal-inner {
-    top: -125px;
-    left: -480px;
+    top: -120px;
+    left: -440px;
+}
+
+.reveal-box:hover .reveal-inner {
+    transform: scale(1.08);
 }
 
 .reveal-box::before {
     content: '';
     position: absolute;
     inset: 0;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
     pointer-events: none;
+    z-index: 1;
+    transition: all 0.4s ease;
 }
 
-.reveal-box-right {
-    position: relative;
-    width: 200px;
-    height: 320px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+.reveal-box:hover::before {
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
 }
 
-.box1-right {
-    cursor: pointer;
-    top: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-.box2-right {
-    cursor: pointer;
-    top: -50px;
-    transition: all 0.3s ease-in-out;
-}
-
-.box3-right {
-    cursor: pointer;
-    top: -100px;
-    transition: all 0.3s ease-in-out;
-}
-
-.box1-right:hover,
-.box2-right:hover,
-.box3-right:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    transform: scale(1.05);
-}
-
-.reveal-inner-right {
+.tech-glow {
     position: absolute;
-    top: -60px;
-    width: 900px;
-    height: 520px;
-    background-size: cover;
-    background-position: center;
-    opacity: 1;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
     pointer-events: none;
+    z-index: 0;
 }
 
-.box1-right .reveal-inner-right {
-    top: -110px;
-    left: 0;
+.image-section:hover .tech-glow {
+    opacity: 1;
 }
 
-.box2-right .reveal-inner-right {
-    left: -240px;
+/* Features Grid */
+.features-grid {
+    position: relative;
 }
 
-.box3-right .reveal-inner-right {
-    top: -10px;
-    left: -480px;
+.feature-item {
+    cursor: default;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
-.reveal-box-right::before {
+.feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Swiper Pagination Customization */
+:deep(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    background: var(--blue-transparent);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+    background: var(--blue);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+:deep(.swiper-pagination-bullet:hover) {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tech-slide-content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 10px;
+    }
+
+    .reveal-box {
+        width: 110px;
+        height: 200px;
+    }
+
+    .box1 {
+        top: -30px;
+    }
+
+    .box2 {
+        top: -15px;
+    }
+
+    .box3 {
+        top: 0px;
+    }
+
+    .reveal-inner {
+        width: 600px;
+        height: 360px;
+    }
+
+    .text-content {
+        padding: 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-swiper-button-prev {
+        left: 0;
+    }
+
+    .tech-swiper-button-next {
+        right: 0;
+    }
+
+    .floating-shape {
+        display: none;
+    }
+
+    .scroll-button {
+        bottom: 4rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-section {
+        transform: scale(0.9);
+    }
+
+    .reveal-box {
+        width: 90px;
+        height: 160px;
+    }
+
+    .box1,
+    .box2,
+    .box3 {
+        top: 0 !important;
+    }
+
+    .tech-swiper-button-prev,
+    .tech-swiper-button-next {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+/* Service Section Styles */
+.list-card {
+    color: var(--white);
+}
+
+.services-swiper {
+    width: 100%;
+    height: 100%;
+    padding: 40px 0;
+    perspective: 1200px;
+    overflow: visible !important;
+}
+
+.swiper-container-wrapper {
+    overflow: visible !important;
+}
+
+:deep(.swiper-wrapper) {
+    align-items: center;
+    overflow: visible !important;
+}
+
+:deep(.swiper-slide) {
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: blur(12px) brightness(0.7);
+    opacity: 0.4;
+    transform: scale(0.75) translateZ(-100px);
+    transform-style: preserve-3d;
+    overflow: visible !important;
+}
+
+:deep(.swiper-slide-active) {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    z-index: 20;
+}
+
+:deep(.swiper-slide-prev) {
+    filter: blur(6px) brightness(0.8);
+    opacity: 0.7;
+    transform: scale(0.85) translateX(80px) translateZ(-50px) rotateY(-15deg);
+}
+
+:deep(.swiper-slide-next) {
+    filter: blur(6px) brightness(0.8);
+    opacity: 0.7;
+    transform: scale(0.85) translateX(-80px) translateZ(-50px) rotateY(15deg);
+}
+
+.service-card {
+    height: 520px;
+    min-height: 520px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(59, 130, 246, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+    backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden !important;
+}
+
+/* Efek glow pada card aktif */
+:deep(.swiper-slide-active) .service-card {
+    box-shadow:
+        0 0 0 1px rgba(59, 130, 246, 0.3),
+        0 25px 50px -12px rgba(59, 130, 246, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: cardGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes cardGlow {
+    0% {
+        box-shadow:
+            0 0 0 1px rgba(59, 130, 246, 0.3),
+            0 25px 50px -12px rgba(59, 130, 246, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 1px rgba(59, 130, 246, 0.4),
+            0 25px 60px -8px rgba(59, 130, 246, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.h-120 {
+    height: 30rem;
+}
+
+.h-130 {
+    height: 32.5rem;
+}
+
+.h-140 {
+    height: 35rem;
+}
+
+@media (max-width: 768px) {
+    .h-120 {
+        height: 28rem;
+    }
+
+    .h-130 {
+        height: 30rem;
+    }
+
+    .h-140 {
+        height: 32rem;
+    }
+}
+
+:deep(.services-swiper)::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .services-swiper {
+        padding: 20px 0;
+        perspective: 800px;
+    }
+
+    :deep(.swiper-slide) {
+        transform: scale(0.7) translateZ(-80px);
+    }
+
+    :deep(.swiper-slide-active) {
+        transform: scale(0.85) translateZ(0);
+    }
+
+    :deep(.swiper-slide-prev) {
+        transform: scale(0.75) translateX(60px) translateZ(-40px) rotateY(-10deg);
+    }
+
+    :deep(.swiper-slide-next) {
+        transform: scale(0.75) translateX(-60px) translateZ(-40px) rotateY(10deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+.instruction-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.services-swiper::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
+    top: 20%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    z-index: -1;
 }
 
-.dropdown-enter-active,
-.dropdown-leave-active {
-    transition: all 0.3s ease;
+.services-swiper::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+    z-index: -1;
 }
 
-.dropdown-enter-from,
-.dropdown-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
+#service {
+    overflow: hidden !important;
 }
 
-.mobile-dropdown-enter-active,
-.mobile-dropdown-leave-active {
-    transition: all 0.3s ease;
-    max-height: 300px;
+.swiper-container-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
+}
+
+:deep(.swiper) {
+    overflow: visible !important;
+}
+
+:deep(.swiper-slide) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-card {
+    margin: 0 auto;
+    overflow: hidden !important;
+}
+
+.text-group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text-group p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.mobile-dropdown-enter-from,
-.mobile-dropdown-leave-to {
-    opacity: 0;
-    max-height: 0;
+.text-group ul {
+    max-height: 120px;
+    overflow-y: auto;
 }
-.list-card {
-  color: var(--white);
+
+.text-group ul::-webkit-scrollbar {
+    width: 4px;
+}
+
+.text-group ul::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.text-group ul::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 2px;
 }
 </style>
