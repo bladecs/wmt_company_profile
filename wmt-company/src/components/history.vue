@@ -64,18 +64,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex justify-center items-center flex-col py-25 modern-timeline">
+    <div class="flex justify-center items-center flex-col py-16 md:py-24 px-4 modern-timeline">
         <h3
             class="p-3 bg-[var(--blue-transparent)] w-fit text-white font-bold rounded-full text-sm md:text-base mb-5">
             About Our History
         </h3>
-        <h1 class="text-white text-center font-bold text-5xl mb-2">A Legacy of Precision</h1>
-        <h1 class="text-[var(--white)] text-center font-bold text-5xl mb-2">A Future of Innovation</h1>
-        <p class="text-white/80 w-150 text-center">Evolving from precision machining to global innovation, our
+        <h1 class="text-white text-center font-bold text-3xl md:text-5xl mb-2">A Legacy of Precision</h1>
+        <h1 class="text-[var(--white)] text-center font-bold text-3xl md:text-5xl mb-2">A Future of Innovation</h1>
+        <p class="text-white/80 w-full max-w-3xl text-center px-2">Evolving from precision machining to global innovation, our
             journey reflects
             continuous growth, technology adoption, and excellence.</p>
 
-        <div class="relative w-full flex flex-col justify-center items-center py-20">
+        <div class="relative w-full flex flex-col justify-center items-center py-14 md:py-20">
             <div class="timeline-line">
                 <div class="line"></div>
                 <div class="dots-container">
@@ -499,33 +499,21 @@ onUnmounted(() => {
     .timeline-image {
         display: block;
     }
-    
-    .timeline-container {
-        padding: 2rem 1rem;
-    }
 
-    .timeline-line {
-        display: block;
-        left: 30px;
-    }
-
+    .timeline-line,
     .dots-container {
-        left: 30px;
-    }
-
-    .dot-wrapper {
-        left: 30px;
+        display: none;
     }
 
     .timeline-item {
-        margin-bottom: 120px;
-        padding: 0 0 0 60px;
+        margin-bottom: 56px;
+        padding: 0;
         min-height: auto;
     }
 
     .item-content {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.25rem;
     }
 
     .left-content .image-section,
@@ -538,6 +526,7 @@ onUnmounted(() => {
 
     .text-content {
         text-align: center !important;
+        padding: 1.25rem;
     }
 
     .text-end .year-badge::after,
@@ -551,28 +540,21 @@ onUnmounted(() => {
         font-size: 2.5rem;
     }
 
+    .title {
+        font-size: 1.25rem;
+    }
+
     .description {
         text-align: center !important;
+        font-size: 0.95rem;
     }
 }
 
 /* Mobile Small */
 @media (max-width: 480px) {
     .timeline-item {
-        padding: 0 0 0 60px !important;
-        margin-bottom: 100px;
-    }
-
-    .dot-wrapper {
-        left: 20px;
-    }
-
-    .timeline-line {
-        left: 20px;
-    }
-
-    .dots-container {
-        left: 20px;
+        padding: 0 !important;
+        margin-bottom: 44px;
     }
 
     .timeline-image {

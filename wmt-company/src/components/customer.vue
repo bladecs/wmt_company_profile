@@ -273,15 +273,15 @@ const modules = [Navigation, FreeMode]
                                     }"
                                     :breakpoints="{
                                         320: {
-                                            slidesPerView: 1.2,
-                                            spaceBetween: 15,
+                                            slidesPerView: 1.05,
+                                            spaceBetween: 12,
                                             freeMode: {
                                                 enabled: true,
                                                 momentum: true
                                             }
                                         },
                                         768: {
-                                            slidesPerView: Math.min(getCustomersByCategory(category.id).length, 2.2),
+                                            slidesPerView: Math.min(getCustomersByCategory(category.id).length, 1.6),
                                             spaceBetween: 20
                                         },
                                         1024: {
@@ -552,7 +552,7 @@ const modules = [Navigation, FreeMode]
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 180px;
+    min-width: 160px;
     backdrop-filter: blur(10px);
 }
 
@@ -704,7 +704,7 @@ const modules = [Navigation, FreeMode]
 
 .customer-swiper {
     padding: 1rem 0;
-    margin: 0 -0.5rem;
+    margin: 0;
     cursor: grab;
 }
 
@@ -973,6 +973,32 @@ const modules = [Navigation, FreeMode]
         padding: 2rem 1rem;
     }
 
+    .category-navigation {
+        margin-bottom: 2rem;
+    }
+
+    .navigation-container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .category-tab {
+        min-width: 140px;
+        padding: 0.85rem 0.9rem;
+    }
+
+    .tab-content {
+        gap: 0.5rem;
+    }
+
+    .category-name {
+        font-size: 0.9rem;
+    }
+
     .title-main,
     .title-sub {
         font-size: 2rem;
@@ -1037,13 +1063,34 @@ const modules = [Navigation, FreeMode]
     }
 
     .navigation-container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: stretch;
     }
 
     .category-tab {
-        width: 100%;
-        max-width: 280px;
+        width: auto;
+        max-width: none;
+        min-width: 140px;
+    }
+
+    .customer-count {
+        display: none;
+    }
+
+    .category-icon {
+        font-size: 1.2rem;
+    }
+
+    .customer-swiper {
+        padding: 0.5rem 0;
+    }
+
+    .customer-slide {
+        padding: 0.25rem;
+    }
+
+    .company-badges {
+        gap: 0.4rem;
     }
 
     .category-section {
