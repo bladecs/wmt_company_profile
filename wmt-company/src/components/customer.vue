@@ -552,7 +552,7 @@ const modules = [Navigation, FreeMode]
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 180px;
+    min-width: 160px;
     backdrop-filter: blur(10px);
 }
 
@@ -973,6 +973,24 @@ const modules = [Navigation, FreeMode]
         padding: 2rem 1rem;
     }
 
+    .category-navigation {
+        margin-bottom: 2rem;
+    }
+
+    .navigation-container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .category-tab {
+        min-width: 150px;
+        padding: 1rem 1rem;
+    }
+
     .title-main,
     .title-sub {
         font-size: 2rem;
@@ -1037,13 +1055,14 @@ const modules = [Navigation, FreeMode]
     }
 
     .navigation-container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: stretch;
     }
 
     .category-tab {
-        width: 100%;
-        max-width: 280px;
+        width: auto;
+        max-width: none;
+        min-width: 140px;
     }
 
     .category-section {

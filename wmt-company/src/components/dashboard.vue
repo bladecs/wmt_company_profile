@@ -81,6 +81,7 @@ const activeTechIndex = ref(0)
 // State untuk scroll button
 const currentSection = ref('about-us')
 const showScrollButton = ref(true)
+const isMobile = ref(false)
 
 // Swiper modules
 const modules = [EffectCards, Mousewheel, Autoplay, Navigation, Pagination]
@@ -212,6 +213,11 @@ const handleScroll = () => {
     }
 }
 
+
+const handleResize = () => {
+    isMobile.value = window.innerWidth < 768
+}
+
 // Swiper configuration untuk services
 const swiperOptions = {
     modules: [EffectCards, Mousewheel, Autoplay],
@@ -277,7 +283,7 @@ const techSwiperOptions = {
     pagination: {
         el: '.tech-swiper-pagination',
         clickable: true,
-        dynamicBullets: true,
+        dynamicBullets: false,
     },
     navigation: {
         nextEl: '.tech-swiper-button-next',
@@ -300,7 +306,9 @@ const techSwiperOptions = {
 
 onMounted(() => {
     setInterval(nextSlide, 5000)
+    handleResize()
     window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
 
     // Set initial section
     const aboutSection = document.getElementById('about-us')
@@ -311,6 +319,7 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', handleResize)
 })
 </script>
 
@@ -318,7 +327,7 @@ onUnmounted(() => {
     <div class="w-full h-fit flex flex-col">
         <!-- Slider -->
         <div class="slider relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[100vh] overflow-hidden">
-            <div class="img-content flex transition-transform duration-700 ease-in-out"
+            <div class="img-content flex h-full transition-transform duration-700 ease-in-out"
                 :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
                 <div class="relative min-w-full h-full" v-for="(img, index) in slides" :key="index">
                     <img class="w-full h-full object-cover" :src="img" :alt="`slider-${index + 1}`" />
@@ -418,7 +427,7 @@ onUnmounted(() => {
             <!-- RIGHT CARDS -->
             <div class="content-card flex-1 grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-2xl">
                 <div
-                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-6 md:px-8 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">shield</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Quality Assurance</h1>
@@ -427,7 +436,7 @@ onUnmounted(() => {
                 </div>
 
                 <div
-                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-6 md:px-8 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">workspace_premium</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Industry Excellence</h1>
@@ -436,7 +445,7 @@ onUnmounted(() => {
                 </div>
 
                 <div
-                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-6 md:px-8 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">group</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Expert Team</h1>
@@ -445,7 +454,7 @@ onUnmounted(() => {
                 </div>
 
                 <div
-                    class="card py-10 px-15 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
+                    class="card py-10 px-6 md:px-8 rounded-2xl bg-white shadow-md border border-[var(--blue-transparent)] flex flex-col items-center text-center gap-2 hover:shadow-lg transition">
                     <span
                         class="material-symbols-outlined text-[var(--deep-blue)] bg-[var(--blue-transparent)] p-3 rounded-full">target</span>
                     <h1 class="text-[var(--blue)] text-lg font-bold">Precision Focus</h1>
@@ -470,21 +479,21 @@ onUnmounted(() => {
                             Comprehensive Manufacturing</h1>
                         <h1 class="font-bold text-[var(--blue)] text-4xl md:text-5xl xl:text-6xl leading-tight">
                             Solutions</h1>
-                        <p class="text-xl text-[var(--white)] max-w-4xl leading-relaxed">From precision machining to
+                        <p class="text-base md:text-xl text-[var(--white)] max-w-4xl leading-relaxed">From precision machining to
                             specialized manufacturing, we offer a complete range of services to meet your most demanding
                             requirements</p>
                     </div>
                 </div>
 
                 <!-- Swiper Container yang diperbaiki -->
-                <div class="w-full max-w-6xl h-120 md:h-140 relative flex justify-center items-center overflow-visible">
+                    <div class="w-full max-w-6xl h-120 md:h-140 relative flex justify-center items-center overflow-visible px-2 sm:px-0">
                     <div
                         class="swiper-container-wrapper w-full h-full flex justify-center items-center overflow-visible">
                         <Swiper v-bind="swiperOptions" class="services-swiper h-full mx-auto">
                             <SwiperSlide v-for="(service, index) in serviceCards" :key="index"
                                 class="flex items-center justify-center overflow-visible">
                                 <div
-                                    :class="['service-card relative w-80 md:w-96 flex flex-col p-8 items-start justify-between bg-[var(--dark-blue)] rounded-3xl border-2 border-[var(--blue-transparent)] backdrop-blur-sm transition-all duration-500 transform', service.height]">
+                                    :class="['service-card relative w-full max-w-[20rem] md:max-w-[24rem] flex flex-col p-6 md:p-8 items-start justify-between bg-[var(--dark-blue)] rounded-3xl border-2 border-[var(--blue-transparent)] backdrop-blur-sm transition-all duration-500 transform', service.height]">
                                     <div class="text-group flex flex-col gap-4 z-20 w-full">
                                         <div class="flex items-center gap-4">
                                             <span
@@ -557,27 +566,27 @@ onUnmounted(() => {
                 <div class="w-full max-w-6xl relative">
                     <!-- Navigation Buttons - POSISI DIPERBAIKI -->
                     <div
-                        class="tech-swiper-button-prev absolute xl:-left-50 md:left-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
+                        class="tech-swiper-button-prev absolute left-1 md:left-2 lg:-left-6 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
                         <span
                             class="material-symbols-outlined text-[var(--white)] text-lg md:text-xl">chevron_left</span>
                     </div>
 
                     <div
-                        class="tech-swiper-button-next absolute xl:-right-50 md:right-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
+                        class="tech-swiper-button-next absolute right-1 md:right-2 lg:-right-6 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer bg-[var(--blue-transparent)] hover:bg-[var(--blue)] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm border border-[var(--blue)] shadow-xl hover:shadow-2xl">
                         <span
                             class="material-symbols-outlined text-[var(--white)] text-lg md:text-xl">chevron_right</span>
                     </div>
 
                     <!-- Swiper Container -->
-                    <div class="w-full h-[600px] md:h-[700px] px-8 md:px-12">
+                    <div class="w-full h-[560px] md:h-[700px] px-2 sm:px-6 md:px-12">
                         <Swiper v-bind="techSwiperOptions" @swiper="onTechSwiper" class="tech-swiper h-full">
                             <SwiperSlide v-for="(tech, index) in techContents" :key="index"
                                 class="flex items-center justify-center">
                                 <div
-                                    class="tech-slide-content w-full h-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 p-4 md:p-6">
+                                    class="tech-slide-content w-full h-full flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between gap-8 md:gap-12 p-4 md:p-6">
                                     <!-- Image Section -->
                                     <div
-                                        class="image-section flex-1 flex justify-center md:justify-start order-2 md:order-1">
+                                        v-if="!isMobile" class="image-section flex-1 justify-center md:justify-start order-2 md:order-1">
                                         <div
                                             class="relative w-full max-w-lg h-80 md:h-96 flex flex-row gap-4 md:gap-6 justify-center items-center">
                                             <div class="reveal-box box1" :class="{ 'active': activeTechIndex === index }">
@@ -603,7 +612,7 @@ onUnmounted(() => {
                                     </div>
 
                                     <!-- Text Content Section -->
-                                    <div class="text-section flex-1 max-w-xl order-1 md:order-2">
+                                    <div class="text-section flex-1 w-full max-w-xl md:max-w-none lg:max-w-xl order-1 md:order-2">
                                         <div
                                             class="text-content bg-gradient-to-br from-[var(--dark-blue)] to-[var(--black-blue)] bg-opacity-80 p-6 md:p-8 rounded-3xl border border-[var(--blue-transparent)] backdrop-blur-lg shadow-2xl">
                                             <div class="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
@@ -653,7 +662,9 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Pagination -->
-                    <div class="tech-swiper-pagination mt-6 md:mt-8 flex justify-center"></div>
+                    <div class="tech-swiper-pagination-wrapper mt-6 md:mt-8">
+                        <div class="tech-swiper-pagination"></div>
+                    </div>
                 </div>
 
                 <!-- Instruction Text -->
@@ -671,6 +682,17 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+.img-content {
+    will-change: transform;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 /* Fade animation */
 .fade-enter-active,
 .fade-leave-active {
@@ -964,6 +986,30 @@ onUnmounted(() => {
     border-color: rgba(59, 130, 246, 0.3);
 }
 
+
+.tech-swiper-pagination-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tech-swiper-pagination {
+    width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    text-align: center;
+}
+
+:deep(.tech-swiper-pagination.swiper-pagination-horizontal) {
+    left: 0 !important;
+    width: 100% !important;
+}
+
+:deep(.tech-swiper-pagination .swiper-pagination-bullets),
+:deep(.tech-swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets) {
+    width: 100% !important;
+}
+
 /* Swiper Pagination Customization */
 :deep(.swiper-pagination-bullet) {
     width: 10px;
@@ -985,7 +1031,26 @@ onUnmounted(() => {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+    .tech-swiper-button-prev {
+        left: 0.5rem !important;
+    }
+
+    .tech-swiper-button-next {
+        right: 0.5rem !important;
+    }
+}
+
 @media (max-width: 768px) {
+    .tech-swiper {
+        min-height: 560px;
+    }
+
+    .text-section {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .tech-slide-content {
         flex-direction: column;
         gap: 2rem;
@@ -1022,13 +1087,6 @@ onUnmounted(() => {
         grid-template-columns: 1fr;
     }
 
-    .tech-swiper-button-prev {
-        left: 0;
-    }
-
-    .tech-swiper-button-next {
-        right: 0;
-    }
 
     .floating-shape {
         display: none;
@@ -1043,8 +1101,15 @@ onUnmounted(() => {
 }
 
 @media (max-width: 480px) {
-    .image-section {
-        transform: scale(0.9);
+    .service-card {
+        max-width: 16.5rem;
+    }
+
+    .h-120,
+    .h-130,
+    .h-140 {
+        height: auto;
+        min-height: 26rem;
     }
 
     .reveal-box {
@@ -1118,6 +1183,7 @@ onUnmounted(() => {
 .service-card {
     height: 520px;
     min-height: 520px;
+    width: 100%;
     box-shadow:
         0 10px 40px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(59, 130, 246, 0.1),
@@ -1170,6 +1236,13 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
+    .service-card {
+        width: 100%;
+        max-width: 18.5rem;
+        min-height: 28rem;
+        height: auto;
+    }
+
     .h-120 {
         height: 28rem;
     }
