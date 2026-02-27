@@ -997,6 +997,8 @@ const modules = [Navigation, FreeMode]
 
     .category-name {
         font-size: 0.9rem;
+        min-width: 150px;
+        padding: 1rem 1rem;
     }
 
     .title-main,
