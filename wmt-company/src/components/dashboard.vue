@@ -283,7 +283,7 @@ const techSwiperOptions = {
     pagination: {
         el: '.tech-swiper-pagination',
         clickable: true,
-        dynamicBullets: true,
+        dynamicBullets: false,
     },
     navigation: {
         nextEl: '.tech-swiper-button-next',
@@ -994,6 +994,20 @@ onUnmounted(() => {
 }
 
 .tech-swiper-pagination {
+    width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    text-align: center;
+}
+
+:deep(.tech-swiper-pagination.swiper-pagination-horizontal) {
+    left: 0 !important;
+    width: 100% !important;
+}
+
+:deep(.tech-swiper-pagination .swiper-pagination-bullets),
+:deep(.tech-swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets) {
+    width: 100% !important;
     width: max-content !important;
     left: 50% !important;
     transform: translateX(-50%);
