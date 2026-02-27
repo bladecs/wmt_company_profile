@@ -1008,6 +1008,9 @@ onUnmounted(() => {
 :deep(.tech-swiper-pagination .swiper-pagination-bullets),
 :deep(.tech-swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets) {
     width: 100% !important;
+    width: max-content !important;
+    left: 50% !important;
+    transform: translateX(-50%);
 }
 
 /* Swiper Pagination Customization */
