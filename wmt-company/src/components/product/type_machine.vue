@@ -30,7 +30,7 @@
             <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-400 rounded-full flex items-center justify-center">
               <span class="material-symbols-outlined text-white text-sm">rocket_launch</span>
             </div>
-            <span class="text-indigo-200 font-semibold tracking-wider text-sm">WAFAQ GLOBAL INNOVATION</span>
+            <span class="text-indigo-200 font-semibold tracking-wider text-sm">WAFIQ GLOBAL INNOVATION</span>
           </div>
           
           <!-- Main Headline -->
