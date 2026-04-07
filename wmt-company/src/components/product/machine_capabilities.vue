@@ -36,11 +36,11 @@
           <!-- Main Headline -->
           <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
             <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              Infrastruktur Manufaktur Presisi Tinggi
+              Special Treatment
             </span>
           </h1>
           <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light tracking-wide">
-            Untuk Kebutuhan Industri Modern
+            Anodize, Coating, Hardening, and Nitriding
           </p>
           
           <!-- Description Card -->
@@ -52,11 +52,8 @@
                 </div>
               </div>
               <p class="text-lg text-gray-200 leading-relaxed">
-                Kami memahami bahwa fondasi dari produk berkualitas adalah fasilitas yang mumpuni. Berlokasi di kawasan strategis dengan luas area produksi mencapai 
-                <span class="font-bold text-white bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">1.500 m²</span> 
-                di atas lahan 
-                <span class="font-bold text-white bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">2.400 m²</span>, 
-                kami mengoperasikan jajaran mesin berteknologi mutakhir untuk menjamin akurasi dan kecepatan produksi.
+                Kami menyediakan layanan finishing dan surface treatment untuk meningkatkan kualitas permukaan, ketahanan aus,
+                kekerasan, dan performa produk akhir sesuai dengan aplikasi industri yang menuntut.
               </p>
             </div>
           </div>
@@ -64,521 +61,236 @@
       </div>
     </section>
 
-    <!-- Facilities Overview -->
-    <section class="py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <!-- Facility Details -->
-          <div>
-            <!-- Section Header -->
-            <div class="mb-8">
-              <div class="inline-flex items-center gap-2 mb-4">
-                <div class="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></div>
-                <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm">INFRASTRUKTUR</span>
-              </div>
-              <h2 class="text-3xl md:text-4xl font-bold text-white">
-                <span class="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                  Fasilitas Produksi Unggulan
-                </span>
-              </h2>
-            </div>
-            
-            <div class="space-y-8">
-              <!-- Facility Item 1 -->
-              <div class="group flex items-start gap-6 p-6 backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-                <div class="flex-shrink-0">
-                  <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <span class="material-symbols-outlined text-white text-2xl">location_on</span>
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-white mb-3">Lokasi Strategis</h3>
-                  <p class="text-gray-300 leading-relaxed">Berada di kawasan industri terintegrasi dengan akses logistik yang optimal untuk efisiensi distribusi dan supply chain management.</p>
-                </div>
-              </div>
-
-              <!-- Facility Item 2 -->
-              <div class="group flex items-start gap-6 p-6 backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-                <div class="flex-shrink-0">
-                  <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <span class="material-symbols-outlined text-white text-2xl">settings</span>
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-white mb-3">Infrastruktur Modern</h3>
-                  <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                      <div class="w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
-                      <span class="text-gray-300">Total Lahan: <span class="font-semibold text-white">2.400 m²</span></span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <div class="w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
-                      <span class="text-gray-300">Area Produksi: <span class="font-semibold text-white">1.500 m²</span></span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <div class="w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
-                      <span class="text-gray-300">Sistem Listrik: <span class="font-semibold text-white">3 Phase Industri 380V</span></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Facility Item 3 -->
-              <div class="group flex items-start gap-6 p-6 backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-                <div class="flex-shrink-0">
-                  <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <span class="material-symbols-outlined text-white text-2xl">engineering</span>
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-white mb-3">Tim Ahli Bersertifikasi</h3>
-                  <p class="text-gray-300 leading-relaxed">Didukung oleh tim engineer dan operator bersertifikasi dengan pengalaman lebih dari 20 tahun di bidang manufaktur presisi, siap memberikan solusi teknis terbaik.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Facility Visualization -->
-          <div class="relative">
-            <!-- Main Card -->
-            <div class="relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10 shadow-2xl overflow-hidden">
-              <!-- Background Gradient -->
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-cyan-900/10"></div>
-              
-              <!-- Title -->
-              <div class="relative mb-8">
-                <h3 class="text-2xl font-bold text-white mb-2">Visualisasi Fasilitas</h3>
-                <p class="text-gray-400">Representasi digital area produksi kami</p>
-              </div>
-              
-              <!-- Factory Visualization -->
-              <div class="relative aspect-video rounded-xl overflow-hidden mb-8 bg-gradient-to-br from-gray-900 to-gray-950 border border-white/10">
-                <!-- Factory Floor Base -->
-                <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900"></div>
-                
-                <!-- Factory Grid -->
-                <div class="absolute inset-0 opacity-20">
-                  <div class="w-full h-full" style="
-                    background-image: 
-                      linear-gradient(to right, #374151 1px, transparent 1px),
-                      linear-gradient(to bottom, #374151 1px, transparent 1px);
-                    background-size: 40px 40px;
-                  "></div>
-                </div>
-                
-                <!-- Simulated Machines -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                </div>
-                
-                <!-- Overlay Gradient -->
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
-              </div>
-              
-              <!-- Stats Grid -->
-              <div class="relative grid grid-cols-2 gap-6">
-                <!-- Stat 1 -->
-                <div class="text-center p-4 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
-                  <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-1">2.400</div>
-                  <div class="text-sm text-gray-400 uppercase tracking-wider">Total Lahan (m²)</div>
-                </div>
-                
-                <!-- Stat 2 -->
-                <div class="text-center p-4 bg-gradient-to-br from-white/10 to-white/5 rounded-xl border border-white/10">
-                  <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-1">1.500</div>
-                  <div class="text-sm text-gray-400 uppercase tracking-wider">Area Produksi (m²)</div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Floating Elements -->
-            <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl"></div>
-            <div class="absolute -bottom-4 -left-4 w-28 h-28 bg-cyan-500/20 rounded-full blur-2xl"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Armada Mesin Section -->
+    <!-- Special Treatment Details Section -->
     <section class="py-16 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-2 mb-4">
             <div class="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></div>
-            <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm">TECHNOLOGY FLEET</span>
+            <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm">TREATMENT METHODS</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
             <span class="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-              Armada Mesin Unggulan Kami
+              Jenis-Jenis Special Treatment
             </span>
           </h2>
           <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-            Investasi berkelanjutan pada teknologi terbaru memastikan kami selalu memberikan solusi manufaktur terdepan
+            Berbagai metode surface treatment untuk meningkatkan performa dan daya tahan komponen
           </p>
         </div>
 
-        <!-- Machine Grid -->
+        <!-- Treatment Cards Grid -->
         <div class="space-y-12">
-          <!-- 5-Axis CNC Milling -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500">
-            <!-- Background Glow Effect -->
+          <!-- Anodize -->
+          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500 p-8">
+            <!-- Background Glow -->
             <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <div class="relative md:flex">
-              <!-- Machine Visual Side -->
-              <div class="md:w-2/5 bg-gradient-to-br from-blue-900/50 to-cyan-900/50 p-8 flex items-center justify-center relative overflow-hidden">
-                <!-- Animated Background Effect -->
-                <div class="absolute inset-0">
-                  <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-400/5 to-blue-500/5 animate-gradient-x"></div>
+            <div class="relative">
+              <!-- Header -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span class="material-symbols-outlined text-white text-2xl">bolt</span>
                 </div>
-                
-                <div class="relative text-center">
-                </div>
+                <h3 class="text-2xl font-bold text-white">Anodize</h3>
               </div>
               
-              <!-- Machine Details -->
-              <div class="md:w-3/5 p-8">
-                <!-- Header -->
-                <div class="flex items-center gap-4 mb-8">
-                  <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <span class="material-symbols-outlined text-white text-2xl">settings</span>
-                  </div>
+              <!-- Description -->
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Proses elektrokimia yang menciptakan lapisan oksida pelindung pada permukaan aluminium dan paduannya. Anodizing meningkatkan ketahanan korosi, kekerasan permukaan, dan memungkinkan pewarnaan anodis untuk aplikasi estetika dan fungsional. Lapisan yang terbentuk sangat tahan lama dan dapat disesuaikan dengan ketebalan mulai dari 5 hingga 150 mikron tergantung kebutuhan aplikasi dan standar industri spesifik.
+              </p>
+              
+              <!-- Benefits -->
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-cyan-400 flex-shrink-0 mt-1">check_circle</span>
                   <div>
-                    <h3 class="text-2xl font-bold text-white">Teknologi 5-Axis CNC Milling</h3>
-                    <div class="flex items-center gap-2 mt-2">
-                      <span class="text-sm font-medium bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent px-3 py-1 rounded-full border border-blue-500/30 backdrop-blur-sm">Okuma MU 400V III</span>
-                    </div>
+                    <div class="font-semibold text-white mb-1">Perlindungan Korosi</div>
+                    <div class="text-sm text-gray-400">Tahan terhadap lingkungan ekstrem dan cuaca</div>
                   </div>
                 </div>
-                
-                <!-- Description -->
-                <p class="text-gray-300 mb-8 leading-relaxed">
-                  Dilengkapi dengan <span class="font-semibold text-white">Okuma MU 400V III</span>, kami mampu menangani pemesinan geometri kompleks dan <em class="text-cyan-300">undercut</em> dengan presisi tingkat tinggi dalam satu kali pengaturan kerja.
-                </p>
-                
-                <!-- Features Grid -->
-                <div class="grid md:grid-cols-2 gap-4 mb-8">
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Multi-axis simultaneous machining</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Single setup untuk kompleksitas tinggi</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Toleransi hingga ±0.005mm</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Ideal untuk aerospace & automotive</span>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-cyan-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Peningkatan Kekerasan</div>
+                    <div class="text-sm text-gray-400">Permukaan lebih tahan abrasi dan gesekan</div>
                   </div>
                 </div>
-                
-                <!-- Technical Specs -->
-                <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-500/20">
-                  <h4 class="font-bold text-white mb-4 flex items-center gap-3">
-                    <span class="material-symbols-outlined text-cyan-400">info</span>
-                    Spesifikasi Teknis
-                  </h4>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-cyan-300 mb-1">400</div>
-                      <div class="text-xs text-gray-400 uppercase">X-Axis (mm)</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-cyan-300 mb-1">12k</div>
-                      <div class="text-xs text-gray-400 uppercase">RPM Spindle</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-cyan-300 mb-1">5</div>
-                      <div class="text-xs text-gray-400 uppercase">Axis</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-cyan-300 mb-1">±0.005</div>
-                      <div class="text-xs text-gray-400 uppercase">Tolerance (mm)</div>
-                    </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-cyan-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Fleksibilitas Warna</div>
+                    <div class="text-sm text-gray-400">Tersedia berbagai variasi warna sesuai kebutuhan</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-cyan-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Ramah Lingkungan</div>
+                    <div class="text-sm text-gray-400">Proses berkelanjutan tanpa emisi berbahaya</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 3-Axis CNC Milling -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500">
-            <div class="relative md:flex flex-row-reverse">
-              <!-- Machine Visual Side -->
-              <div class="md:w-2/5 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-8 flex items-center justify-center relative overflow-hidden">
-                <!-- Background Effect -->
-                <div class="absolute inset-0">
-                  <div class="absolute inset-0 bg-gradient-to-r from-gray-700/5 via-gray-600/5 to-gray-700/5"></div>
+          <!-- Coating -->
+          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500 p-8">
+            <!-- Background Glow -->
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-pink-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div class="relative">
+              <!-- Header -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-purple-600 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span class="material-symbols-outlined text-white text-2xl">format_paint</span>
                 </div>
-                
-                <div class="relative text-center">
-                </div>
+                <h3 class="text-2xl font-bold text-white">Coating</h3>
               </div>
               
-              <!-- Machine Details -->
-              <div class="md:w-3/5 p-8">
-                <!-- Header -->
-                <div class="flex items-center gap-4 mb-8">
-                  <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <span class="material-symbols-outlined text-white text-2xl">diversity_2</span>
-                  </div>
+              <!-- Description -->
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Aplikasi lapisan tipis dari material pelindung (cat, powder coating, atau liquid coating) pada permukaan komponen untuk memberikan perlindungan korosi dan estetika. Coating dapat berupa single layer atau multi-layer dengan ketebalan film kering 30-200 mikron yang disesuaikan dengan kondisi lingkungan penggunaan. Metode aplikasi meliputi spray, electrostatic powder coating, atau immersion untuk memastikan cakupan merata dan adhesi optimal pada seluruh permukaan.
+              </p>
+              
+              <!-- Benefits -->
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-pink-400 flex-shrink-0 mt-1">check_circle</span>
                   <div>
-                    <h3 class="text-2xl font-bold text-white">Pemesinan 3-Axis CNC Berkapasitas Tinggi</h3>
-                    <div class="flex flex-wrap gap-2 mt-2">
-                      <span class="text-sm font-medium bg-gradient-to-r from-gray-500 to-gray-400 bg-clip-text text-transparent px-3 py-1 rounded-full border border-gray-500/30 backdrop-blur-sm">Multi-unit Production</span>
-                    </div>
+                    <div class="font-semibold text-white mb-1">Perlindungan Komprehensif</div>
+                    <div class="text-sm text-gray-400">Melindungi dari korosi, kelembaban, dan UV</div>
                   </div>
                 </div>
-                
-                <!-- Description -->
-                <p class="text-gray-300 mb-8 leading-relaxed">
-                  Didukung oleh berbagai unit mesin andal seperti 
-                  <span class="font-semibold text-white">Hartford Pro 1000 SP</span>, 
-                  <span class="font-semibold text-white">Moriseiki NV500α1β</span>, 
-                  <span class="font-semibold text-white">LITZ CV-800</span>, dan 
-                  <span class="font-semibold text-white">Doosan DNM650 (Multi-unit)</span>, 
-                  memastikan fleksibilitas dan stabilitas produksi.
-                </p>
-                
-                <!-- Machine Fleet -->
-                <div class="mb-8">
-                  <h4 class="font-bold text-white mb-4 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-gray-400">manufacturing</span>
-                    Armada Mesin 3-Axis
-                  </h4>
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div class="p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-xl border border-white/10">
-                      <div class="flex items-center gap-3 mb-3">
-                        <span class="material-symbols-outlined text-blue-400">manufacturing</span>
-                        <span class="font-semibold text-white">Hartford Pro 1000 SP</span>
-                      </div>
-                      <div class="text-sm text-gray-400 space-y-2">
-                        <div class="flex justify-between">
-                          <span>Travel (X/Y/Z):</span>
-                          <span class="font-medium text-gray-300">1000×500×500 mm</span>
-                        </div>
-                        <div class="flex justify-between">
-                          <span>Spindle Speed:</span>
-                          <span class="font-medium text-gray-300">8,000 rpm</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-xl border border-white/10">
-                      <div class="flex items-center gap-3 mb-3">
-                        <span class="material-symbols-outlined text-blue-400">manufacturing</span>
-                        <span class="font-semibold text-white">Doosan DNM650</span>
-                      </div>
-                      <div class="text-sm text-gray-400 space-y-2">
-                        <div class="flex justify-between">
-                          <span>Travel (X/Y/Z):</span>
-                          <span class="font-medium text-gray-300">650×500×500 mm</span>
-                        </div>
-                        <div class="flex justify-between">
-                          <span>Spindle Speed:</span>
-                          <span class="font-medium text-gray-300">12,000 rpm</span>
-                        </div>
-                      </div>
-                    </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-pink-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Pilihan Warna & Finish</div>
+                    <div class="text-sm text-gray-400">Berbagai opsi warna, gloss, dan efek tekstur</div>
                   </div>
                 </div>
-                
-                <!-- Capabilities -->
-                <div class="grid md:grid-cols-2 gap-4">
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Volume produksi tinggi</span>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-pink-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Efisiensi Biaya</div>
+                    <div class="text-sm text-gray-400">Solusi ekonomis untuk perlindungan jangka panjang</div>
                   </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Fleksibilitas setup cepat</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Stabilitas produksi jangka panjang</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Redundansi untuk kontinuitas</span>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-pink-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Aplikasi Luas</div>
+                    <div class="text-sm text-gray-400">Cocok untuk berbagai jenis material</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- CNC Turning Center -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500">
-            <div class="relative md:flex">
-              <!-- Machine Visual Side -->
-              <div class="md:w-2/5 bg-gradient-to-br from-emerald-900/50 to-green-900/50 p-8 flex items-center justify-center relative overflow-hidden">
-                <!-- Background Effect -->
-                <div class="absolute inset-0">
-                  <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-green-400/5 to-emerald-500/5"></div>
+          <!-- Hardening -->
+          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500 p-8">
+            <!-- Background Glow -->
+            <div class="absolute inset-0 bg-gradient-to-r from-red-900/20 via-transparent to-orange-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div class="relative">
+              <!-- Header -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-red-600 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span class="material-symbols-outlined text-white text-2xl">local_fire_department</span>
                 </div>
-                
-                <div class="relative text-center">
-                </div>
+                <h3 class="text-2xl font-bold text-white">Hardening</h3>
               </div>
               
-              <!-- Machine Details -->
-              <div class="md:w-3/5 p-8">
-                <!-- Header -->
-                <div class="flex items-center gap-4 mb-8">
-                  <div class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-green-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <span class="material-symbols-outlined text-white text-2xl">tune</span>
-                  </div>
+              <!-- Description -->
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Proses perlakuan panas yang meningkatkan kekerasan dan kekuatan material melalui pemanasan hingga suhu kritis diikuti pendinginan cepat (quenching). Hardening mengubah struktur mikro material sehingga menghasilkan permukaan yang sangat keras dan tahan aus. Proses ini ideal untuk komponen yang mengalami pembebanan tinggi, gesekan intensif, dan memerlukan ketahanan mekanik maksimal dalam aplikasi otomotif, aerospace, atau heavy machinery.
+              </p>
+              
+              <!-- Benefits -->
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-orange-400 flex-shrink-0 mt-1">check_circle</span>
                   <div>
-                    <h3 class="text-2xl font-bold text-white">CNC Turning Center</h3>
-                    <div class="flex items-center gap-2 mt-2">
-                      <span class="text-sm font-medium bg-gradient-to-r from-emerald-500 to-green-400 bg-clip-text text-transparent px-3 py-1 rounded-full border border-emerald-500/30 backdrop-blur-sm">LK LTR-8</span>
-                    </div>
+                    <div class="font-semibold text-white mb-1">Kekerasan Maksimal</div>
+                    <div class="text-sm text-gray-400">Peningkatan kekerasan hingga 2-3x lipat</div>
                   </div>
                 </div>
-                
-                <!-- Description -->
-                <p class="text-gray-300 mb-8 leading-relaxed">
-                  Solusi pembubutan presisi menggunakan <span class="font-semibold text-white">LK LTR-8</span> untuk komponen poros dan silindris dengan toleransi ketat, menjamin akurasi dan kualitas permukaan yang superior.
-                </p>
-                
-                <!-- Special Features -->
-                <div class="grid md:grid-cols-2 gap-4 mb-8">
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Live tooling capability</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">C-axis contouring</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Bar feeding system</span>
-                  </div>
-                  <div class="flex items-center gap-3 p-3 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
-                    <span class="material-symbols-outlined text-green-400">check_circle</span>
-                    <span class="text-gray-300">Automatic tool changer</span>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-orange-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Ketahanan Aus</div>
+                    <div class="text-sm text-gray-400">Resistansi tinggi terhadap abrasi dan gesekan</div>
                   </div>
                 </div>
-                
-                <!-- Technical Specifications -->
-                <div class="bg-gradient-to-br from-emerald-900/30 to-green-900/30 rounded-xl p-6 border border-emerald-500/20">
-                  <h4 class="font-bold text-white mb-4 flex items-center gap-3">
-                    <span class="material-symbols-outlined text-green-400">tune</span>
-                    Spesifikasi Teknis
-                  </h4>
-                  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">Φ420</div>
-                      <div class="text-xs text-gray-400 uppercase">Max Swing (mm)</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">800</div>
-                      <div class="text-xs text-gray-400 uppercase">Turning Length (mm)</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">3.5k</div>
-                      <div class="text-xs text-gray-400 uppercase">Spindle (RPM)</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">Φ65</div>
-                      <div class="text-xs text-gray-400 uppercase">Bar Capacity</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">±0.005</div>
-                      <div class="text-xs text-gray-400 uppercase">Tolerance (mm)</div>
-                    </div>
-                    <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                      <div class="text-2xl font-bold text-green-300 mb-1">Ra 0.4</div>
-                      <div class="text-xs text-gray-400 uppercase">Surface Finish</div>
-                    </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-orange-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Kekuatan Structural</div>
+                    <div class="text-sm text-gray-400">Mampu menahan beban dan tekanan tinggi</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-orange-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Umur Pakai Panjang</div>
+                    <div class="text-sm text-gray-400">Perpanjangan siklus hidup komponen secara signifikan</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Quality Assurance -->
-    <section class="py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-2 mb-4">
-            <div class="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></div>
-            <span class="text-blue-400 font-semibold tracking-wider uppercase text-sm">QUALITY SYSTEMS</span>
-          </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span class="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-              Sistem Jaminan Kualitas
-            </span>
-          </h2>
-          <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-            Setiap mesin dilengkapi dengan sistem pengukuran dan inspeksi untuk memastikan output sesuai standar internasional
-          </p>
-        </div>
-        
-        <!-- Quality Cards Grid -->
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Quality Item 1 -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-            <!-- Glow Effect -->
-            <div class="absolute -top-3 -right-3 w-16 h-16 bg-blue-500/10 rounded-full blur-xl"></div>
+          <!-- Nitriding -->
+          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-blue-500/30 transition-all duration-500 p-8">
+            <!-- Background Glow -->
+            <div class="absolute inset-0 bg-gradient-to-r from-green-900/20 via-transparent to-emerald-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div class="relative">
-              <!-- Icon -->
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span class="material-symbols-outlined text-white text-3xl">verified</span>
+              <!-- Header -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-green-600 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span class="material-symbols-outlined text-white text-2xl">bubbles</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Nitriding</h3>
               </div>
               
-              <!-- Content -->
-              <h3 class="text-xl font-bold text-white mb-4 text-center">In-Process Inspection</h3>
-              <p class="text-gray-300 text-center leading-relaxed">
-                Inspeksi bertahap selama proses produksi untuk mencegah defect dan menjamin konsistensi kualitas dengan standar tertinggi.
+              <!-- Description -->
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Proses difusi kimia dimana nitrogen menembus permukaan material pada suhu tinggi (480-650°C) tanpa perlu quenching yang ekstrem. Nitriding membentuk kerak keras nitrida yang sangat tahan aus dan korosi dengan permeabilitas ketahanan yang dalam. Metode ini ideal untuk komponen presisi yang memerlukan ketahanan aus lokal tanpa distorsi dimensi, seperti dies, molds, dan gear. Keunggulan utamanya adalah deformasi minimal sehingga cocok untuk part yang sudah finishing.
               </p>
-            </div>
-          </div>
-          
-          <!-- Quality Item 2 -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-            <!-- Glow Effect -->
-            <div class="absolute -top-3 -left-3 w-16 h-16 bg-cyan-500/10 rounded-full blur-xl"></div>
-            
-            <div class="relative">
-              <!-- Icon -->
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span class="material-symbols-outlined text-white text-3xl">monitoring</span>
-              </div>
               
-              <!-- Content -->
-              <h3 class="text-xl font-bold text-white mb-4 text-center">Real-time Monitoring</h3>
-              <p class="text-gray-300 text-center leading-relaxed">
-                Sistem monitoring digital canggih untuk melacak performa mesin dan parameter produksi secara real-time dengan akurasi tinggi.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Quality Item 3 -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
-            <!-- Glow Effect -->
-            <div class="absolute -bottom-3 -right-3 w-16 h-16 bg-blue-500/10 rounded-full blur-xl"></div>
-            
-            <div class="relative">
-              <!-- Icon -->
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span class="material-symbols-outlined text-white text-3xl">approval_delegation</span>
+              <!-- Benefits -->
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-emerald-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Presisi Terjaga</div>
+                    <div class="text-sm text-gray-400">Deformasi minimal, dimensi tetap stabil</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-emerald-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Ketahanan Korosi</div>
+                    <div class="text-sm text-gray-400">Perlindungan dari berbagai lingkungan korosif</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-emerald-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Ketahanan Aus Tinggi</div>
+                    <div class="text-sm text-gray-400">Kerak keras yang sangat tahan terhadap friksi</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gradient-to-br from-white/5 to-white/3 rounded-lg border border-white/10">
+                  <span class="material-symbols-outlined text-emerald-400 flex-shrink-0 mt-1">check_circle</span>
+                  <div>
+                    <div class="font-semibold text-white mb-1">Cocok untuk Dies & Molds</div>
+                    <div class="text-sm text-gray-400">Solusi optimal untuk industri karet dan plastik</div>
+                  </div>
+                </div>
               </div>
-              
-              <!-- Content -->
-              <h3 class="text-xl font-bold text-white mb-4 text-center">Final QC Check</h3>
-              <p class="text-gray-300 text-center leading-relaxed">
-                Inspeksi akhir menyeluruh sebelum pengiriman menggunakan alat ukur presisi terkalibrasi untuk memastikan produk sesuai spesifikasi.
-              </p>
             </div>
           </div>
         </div>

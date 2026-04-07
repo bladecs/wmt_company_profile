@@ -152,18 +152,19 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Quick Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl animate-card">
+                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-7 xl:gap-8 w-full max-w-7xl animate-card">
                     <div class="stat-item group" v-for="stat in [
-                        { icon: 'workspace_premium', number: '3', label: 'ISO Certifications' },
-                        { icon: 'factory', number: '2,400 m²', label: 'Factory Area' },
-                        { icon: 'precision_manufacturing', number: '1,500 m²', label: 'Production Facility' },
-                        { icon: 'location_on', number: 'Bandung', label: 'West Java, Indonesia' }
-                    ]" :key="stat.icon">
+                        { title: 'Seiri', jp: '整理', label: 'Memilah yang penting.' },
+                        { title: 'Seiton', jp: '整頓', label: 'Menata agar efisien.' },
+                        { title: 'Seiso', jp: '清掃', label: 'Menjaga area tetap bersih.' },
+                        { title: 'Seiketsu', jp: '清潔', label: 'Menstandarkan kebiasaan baik.' },
+                        { title: 'Shitsuke', jp: '躾', label: 'Mendisiplinkan konsistensi kerja.' }
+                    ]" :key="stat.title">
                         <div class="stat-icon group-hover:scale-110">
-                            <span class="material-symbols-outlined">{{ stat.icon }}</span>
+                            <span class="jp-icon">{{ stat.jp }}</span>
                         </div>
                         <div class="stat-content">
-                            <div class="number">{{ stat.number }}</div>
+                            <div class="number">{{ stat.title }}</div>
                             <div class="label">{{ stat.label }}</div>
                         </div>
                         <div class="stat-hover-effect"></div>
@@ -1064,9 +1065,12 @@ onUnmounted(() => {
 /* Stat Items */
 .stat-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 16px;
-    padding: 24px;
+    justify-content: center;
+    min-height: 178px;
+    padding: 28px 24px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1099,27 +1103,48 @@ onUnmounted(() => {
 }
 
 .stat-icon {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     color: #00d4ff;
-    transition: all 0.3s ease;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.stat-icon .jp-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.stat-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
 }
 
 .stat-content .number {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.35rem;
+    font-weight: 700;
     color: white;
+    line-height: 1.2;
+    max-width: 10ch;
 }
 
 .stat-content .label {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
+    line-height: 1.5;
+    max-width: 15ch;
 }
 
 /* Modern Cards */
@@ -1358,10 +1383,16 @@ onUnmounted(() => {
     }
 
     .stat-item {
-        flex-direction: column;
         text-align: center;
-        gap: 12px;
-        padding: 20px;
+        gap: 14px;
+        padding: 22px 18px;
+        min-height: 164px;
+        justify-content: center;
+    }
+
+    .stat-content {
+        text-align: center;
+        align-items: center;
     }
 
     .product-gallery {

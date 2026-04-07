@@ -1,59 +1,56 @@
 <template>
   <div class="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-    <!-- Hero Section -->
-    <section class="relative py-20 md:py-32 overflow-hidden">
-      <!-- Background with Pure CSS Gradients -->
+    <section class="relative overflow-hidden py-24 md:py-32">
       <div class="absolute inset-0">
-        <!-- Base Gradient - Blue/Teal for Technology/Engineering -->
-        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-teal-950 to-gray-900"></div>
-        
-        <!-- Animated Central Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
-        
-        <!-- Circuit-like Lines -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-950 via-teal-950 to-gray-900"></div>
+        <div class="absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl animate-pulse-soft"></div>
+        <div class="absolute left-0 top-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl"></div>
+
         <div class="absolute inset-0 opacity-10">
-          <div class="absolute top-1/4 left-1/4 w-64 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent transform rotate-45"></div>
-          <div class="absolute bottom-1/4 right-1/4 w-64 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent transform -rotate-45"></div>
-          <div class="absolute top-1/2 left-0 w-1/2 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-          <div class="absolute top-0 left-1/2 w-1 h-1/2 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div class="absolute left-[18%] top-[28%] h-1 w-72 rotate-45 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+          <div class="absolute right-[12%] top-[32%] h-1 w-72 -rotate-45 bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
+          <div class="absolute left-1/2 top-0 h-1/2 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
+          <div class="absolute left-0 top-1/2 h-px w-1/2 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
         </div>
-        
-        <!-- Corner Glow Effects -->
-        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
       </div>
-      
-      <!-- Content -->
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <!-- Certification Badge -->
-          <div class="inline-flex items-center gap-3 mb-8 bg-gradient-to-r from-cyan-900/40 to-teal-900/40 backdrop-blur-md px-6 py-3 rounded-full border border-cyan-700/30 shadow-xl">
-            <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-teal-400 rounded-full flex items-center justify-center">
-              <span class="material-symbols-outlined text-white text-sm">verified</span>
+          <div class="mb-8 inline-flex items-center gap-3 rounded-full border border-cyan-700/30 bg-gradient-to-r from-cyan-900/40 to-teal-900/40 px-6 py-3 shadow-xl backdrop-blur-md">
+            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-teal-400">
+              <span class="material-symbols-outlined text-sm text-white">verified</span>
             </div>
-            <span class="text-cyan-200 font-semibold tracking-wider text-sm">CERTIFIED BY DEPARTEMEN PERINDUSTRIAN</span>
-          </div>
-          
-          <!-- Main Headline -->
-          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-            <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-400 bg-clip-text text-transparent">
-              Menghidupkan Kembali Aset Anda
+            <span class="text-sm font-semibold tracking-[0.22em] text-cyan-200">
+              CERTIFIED REVERSE ENGINEERING
             </span>
+          </div>
+
+          <h1 class="mb-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
+            <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-400 bg-clip-text text-transparent">
+              Menghidupkan Kembali
+            </span>
+            <br>
+            Aset Fisik Menjadi Data Digital
           </h1>
-          <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light tracking-wide">
-            Dengan Presisi Digital
+
+          <p class="mx-auto mb-10 max-w-3xl text-xl font-light tracking-wide text-gray-300 md:text-2xl">
+            Fokus pada 3D Scanning dan Modeling untuk reproduksi, pengembangan, dan validasi engineering.
           </p>
-          
-          <!-- Description Card -->
-          <div class="max-w-3xl mx-auto backdrop-blur-sm bg-gradient-to-b from-white/5 to-white/3 p-8 rounded-2xl border border-white/10 shadow-2xl">
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 mt-1">
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-600 to-teal-500 rounded-lg flex items-center justify-center">
+
+          <div class="mx-auto max-w-4xl rounded-2xl border border-white/10 bg-gradient-to-b from-white/7 to-white/4 p-8 shadow-2xl backdrop-blur-sm">
+            <div class="flex flex-col items-start gap-4 text-left md:flex-row">
+              <div class="mt-1 flex-shrink-0">
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-600 to-teal-500">
                   <span class="material-symbols-outlined text-white">sync_alt</span>
                 </div>
               </div>
-              <p class="text-lg text-gray-200 leading-relaxed">
-                Ketiadaan gambar teknis bukan lagi hambatan. Tim engineering kami memiliki sertifikasi resmi dari Departemen Perindustrian untuk layanan <span class="font-bold text-white">Reverse Engineering & Product Design</span>. Kami menjembatani kesenjangan antara komponen fisik yang sudah ada dan kebutuhan data digital untuk reproduksi atau modifikasi.
+              <p class="text-lg leading-relaxed text-gray-200">
+                Ketiadaan drawing atau data CAD bukan lagi hambatan. Melalui
+                <span class="font-bold text-white"> 3D Scanning </span>
+                kami menangkap bentuk aktual komponen, lalu meneruskannya ke tahap
+                <span class="font-bold text-white"> Modeling </span>
+                untuk membangun data engineering yang bersih, akurat, dan siap dipakai kembali pada proses desain maupun produksi.
               </p>
             </div>
           </div>
@@ -61,120 +58,106 @@
       </div>
     </section>
 
-    <!-- Process Visualization -->
-    <section class="py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 mb-4">
-            <div class="w-2 h-8 bg-gradient-to-b from-cyan-500 to-teal-400 rounded-full"></div>
-            <span class="text-cyan-400 font-semibold tracking-wider uppercase text-sm">DIGITAL TRANSFORMATION</span>
+    <section class="bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 text-center">
+          <div class="mb-4 inline-flex items-center gap-2">
+            <div class="h-8 w-2 rounded-full bg-gradient-to-b from-cyan-500 to-teal-400"></div>
+            <span class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Digital Transformation</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
             <span class="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
               Proses Digitalisasi Komponen
             </span>
           </h2>
-          <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-            Transformasi objek fisik menjadi data digital yang akurat dan dapat dimodifikasi
+          <p class="mx-auto max-w-3xl text-lg text-gray-400">
+            Alur reverse engineering kami dirancang untuk mengubah part fisik menjadi model digital yang siap dikembangkan lebih lanjut.
           </p>
         </div>
 
-        <!-- Process Flow -->
         <div class="relative mb-16">
-          <!-- Connecting Lines -->
-          <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500/20 via-teal-500/40 to-blue-500/20 hidden md:block"></div>
-          
-          <div class="grid md:grid-cols-3 gap-8 relative">
-            <!-- Step 1 -->
+          <div class="absolute left-0 right-0 top-1/2 hidden h-0.5 bg-gradient-to-r from-cyan-500/20 via-teal-500/40 to-blue-500/20 md:block"></div>
+
+          <div class="relative grid gap-8 md:grid-cols-3">
             <div class="text-center">
               <div class="relative mb-8">
-                <!-- Step Number -->
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-cyan-600 to-teal-500 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <span class="material-symbols-outlined text-white text-3xl">scanner</span>
+                <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-cyan-600 to-teal-500 shadow-xl">
+                  <span class="material-symbols-outlined text-3xl text-white">scanner</span>
                 </div>
-                <!-- Connecting Dot -->
-                <div class="absolute top-1/2 -right-4 w-8 h-8 bg-gradient-to-br from-cyan-500 to-teal-400 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                <div class="absolute -right-4 top-1/2 hidden h-8 w-8 rounded-full border-4 border-gray-900 bg-gradient-to-br from-cyan-500 to-teal-400 md:block"></div>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">3D Scanning</h3>
-              <p class="text-gray-300">Capture data permukaan objek fisik dengan teknologi pemindaian terkini</p>
+              <h3 class="mb-3 text-xl font-bold text-white">3D Scanning</h3>
+              <p class="text-gray-300">
+                Menangkap data aktual permukaan dan dimensi komponen sebagai dasar proses engineering berikutnya.
+              </p>
             </div>
 
-            <!-- Step 2 -->
             <div class="text-center">
               <div class="relative mb-8">
-                <!-- Step Number -->
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-teal-600 to-blue-500 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <span class="material-symbols-outlined text-white text-3xl">architecture</span>
+                <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-teal-600 to-blue-500 shadow-xl">
+                  <span class="material-symbols-outlined text-3xl text-white">architecture</span>
                 </div>
-                <!-- Connecting Dots -->
-                <div class="absolute top-1/2 -left-4 w-8 h-8 bg-gradient-to-br from-cyan-500 to-teal-400 rounded-full border-4 border-gray-900 hidden md:block"></div>
-                <div class="absolute top-1/2 -right-4 w-8 h-8 bg-gradient-to-br from-teal-500 to-blue-400 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                <div class="absolute -left-4 top-1/2 hidden h-8 w-8 rounded-full border-4 border-gray-900 bg-gradient-to-br from-cyan-500 to-teal-400 md:block"></div>
+                <div class="absolute -right-4 top-1/2 hidden h-8 w-8 rounded-full border-4 border-gray-900 bg-gradient-to-br from-teal-500 to-blue-400 md:block"></div>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">CAD Modeling</h3>
-              <p class="text-gray-300">Konversi data point cloud menjadi model CAD parametrik</p>
+              <h3 class="mb-3 text-xl font-bold text-white">Modeling</h3>
+              <p class="text-gray-300">
+                Menyusun hasil scan menjadi model CAD yang bersih, terstruktur, dan mudah digunakan untuk evaluasi atau modifikasi.
+              </p>
             </div>
 
-            <!-- Step 3 -->
             <div class="text-center">
               <div class="relative mb-8">
-                <!-- Step Number -->
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-600 to-indigo-500 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <span class="material-symbols-outlined text-white text-3xl">verified</span>
+                <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-500 shadow-xl">
+                  <span class="material-symbols-outlined text-3xl text-white">verified</span>
                 </div>
-                <!-- Connecting Dot -->
-                <div class="absolute top-1/2 -left-4 w-8 h-8 bg-gradient-to-br from-teal-500 to-blue-400 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                <div class="absolute -left-4 top-1/2 hidden h-8 w-8 rounded-full border-4 border-gray-900 bg-gradient-to-br from-teal-500 to-blue-400 md:block"></div>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">Quality Validation</h3>
-              <p class="text-gray-300">Verifikasi akurasi model dan optimasi untuk produksi</p>
+              <h3 class="mb-3 text-xl font-bold text-white">Engineering Ready</h3>
+              <p class="text-gray-300">
+                Model akhir siap dilanjutkan ke validasi, pembuatan drawing, reproduksi komponen, atau persiapan manufaktur.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Visual Comparison -->
-        <div class="backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 p-8 shadow-2xl">
-          <h3 class="text-2xl font-bold text-white mb-8 text-center">Dari Fisik ke Digital</h3>
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Physical Side -->
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-8 shadow-2xl backdrop-blur-sm">
+          <h3 class="mb-8 text-center text-2xl font-bold text-white">Dari Fisik ke Digital</h3>
+          <div class="grid gap-8 md:grid-cols-2">
             <div class="text-center">
               <div class="mb-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <span class="material-symbols-outlined text-white text-3xl">cube</span>
+                <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-gray-600 to-gray-500">
+                  <span class="material-symbols-outlined text-3xl text-white">precision_manufacturing</span>
                 </div>
-                <h4 class="text-xl font-bold text-white mb-2">Komponen Fisik</h4>
-                <p class="text-gray-400">Tanpa dokumentasi teknis</p>
+                <h4 class="mb-2 text-xl font-bold text-white">Komponen Fisik</h4>
+                <p class="text-gray-400">Part aktual tanpa file CAD atau dokumentasi teknis yang lengkap.</p>
               </div>
-              <div class="h-48 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 flex items-center justify-center">
+              <div class="flex h-52 items-center justify-center rounded-xl border border-gray-700 bg-gradient-to-br from-gray-800 to-gray-900">
                 <div class="relative">
-                  <!-- Physical Part Visualization -->
-                  <div class="w-32 h-32 bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg transform rotate-12 shadow-lg">
-                    <div class="absolute inset-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-md"></div>
-                    <div class="absolute -top-2 -left-2 w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-500 rounded-full"></div>
-                    <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-gray-600 to-gray-500 rounded-full"></div>
+                  <div class="h-32 w-32 rotate-12 rounded-lg bg-gradient-to-br from-gray-700 to-gray-800 shadow-lg">
+                    <div class="absolute inset-4 rounded-md bg-gradient-to-br from-gray-800 to-gray-900"></div>
+                    <div class="absolute -left-2 -top-2 h-8 w-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-500"></div>
+                    <div class="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-500"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Digital Side -->
             <div class="text-center">
               <div class="mb-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-cyan-600 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <span class="material-symbols-outlined text-white text-3xl">polyline</span>
+                <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-600 to-teal-500">
+                  <span class="material-symbols-outlined text-3xl text-white">polyline</span>
                 </div>
-                <h4 class="text-xl font-bold text-white mb-2">Model CAD 3D</h4>
-                <p class="text-gray-400">Data digital lengkap dengan parameter</p>
+                <h4 class="mb-2 text-xl font-bold text-white">Data Engineering</h4>
+                <p class="text-gray-400">Model digital siap pakai untuk analisa, redesign, atau proses berikutnya.</p>
               </div>
-              <div class="h-48 rounded-xl bg-gradient-to-br from-cyan-900/30 to-teal-900/30 border border-cyan-500/20 flex items-center justify-center">
+              <div class="flex h-52 items-center justify-center rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-900/30 to-teal-900/30">
                 <div class="relative">
-                  <!-- Digital CAD Visualization -->
-                  <div class="w-32 h-32 bg-gradient-to-br from-cyan-800/50 to-teal-800/50 rounded-lg shadow-lg border border-cyan-500/30">
-                    <!-- Grid Pattern -->
-                    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(90deg, #06b6d4 1px, transparent 1px), linear-gradient(180deg, #06b6d4 1px, transparent 1px); background-size: 20px 20px;"></div>
-                    <!-- 3D Object -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20">
-                      <div class="w-full h-full bg-gradient-to-br from-cyan-500/30 to-teal-500/30 border border-cyan-400/40 rounded-lg transform rotate-45"></div>
-                      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-cyan-400/40 to-teal-400/40 border border-cyan-300/40 rounded"></div>
+                  <div class="relative h-32 w-32 rounded-lg border border-cyan-500/30 bg-gradient-to-br from-cyan-800/50 to-teal-800/50 shadow-lg">
+                    <div class="absolute inset-0 opacity-20 cad-grid"></div>
+                    <div class="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2">
+                      <div class="h-full w-full rotate-45 rounded-lg border border-cyan-400/40 bg-gradient-to-br from-cyan-500/30 to-teal-500/30"></div>
+                      <div class="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded border border-cyan-300/40 bg-gradient-to-br from-cyan-400/40 to-teal-400/40"></div>
                     </div>
                   </div>
                 </div>
@@ -185,177 +168,156 @@
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="py-16 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 mb-4">
-            <div class="w-2 h-8 bg-gradient-to-b from-cyan-500 to-teal-400 rounded-full"></div>
-            <span class="text-cyan-400 font-semibold tracking-wider uppercase text-sm">KEUNGGULAN LAYANAN</span>
+    <section class="bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 text-center">
+          <div class="mb-4 inline-flex items-center gap-2">
+            <div class="h-8 w-2 rounded-full bg-gradient-to-b from-cyan-500 to-teal-400"></div>
+            <span class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Core Capabilities</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
             <span class="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
               Solusi Reverse Engineering
             </span>
           </h2>
-          <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-            Teknologi dan metodologi terdepan untuk digitalisasi dan validasi komponen
+          <p class="mx-auto max-w-3xl text-lg text-gray-400">
+            Dua tahapan utama yang saling terhubung untuk menghasilkan model yang dapat dipertanggungjawabkan secara teknis.
           </p>
         </div>
 
-        <!-- Services Grid -->
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-          <!-- Service 1 -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all duration-500">
-            <!-- Background Glow -->
-            <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/20 via-transparent to-teal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
+        <div class="mb-16 grid gap-8 md:grid-cols-2">
+          <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm transition-all duration-500 hover:border-cyan-500/30">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/20 via-transparent to-teal-900/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
             <div class="relative p-8">
-              <!-- Header -->
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 bg-gradient-to-br from-cyan-600 to-teal-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span class="material-symbols-outlined text-white text-3xl">grid_3x3</span>
+              <div class="mb-8 overflow-hidden rounded-xl border border-white/10">
+                <img src="../../assets/img/3d-scanner.jpeg" alt="3D scanning process" class="h-64 w-full object-cover">
+              </div>
+
+              <div class="mb-8 flex items-center gap-4">
+                <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-600 to-teal-500 shadow-lg">
+                  <span class="material-symbols-outlined text-3xl text-white">scanner</span>
                 </div>
                 <div>
-                  <h3 class="text-2xl font-bold text-white">Digitalisasi Komponen</h3>
-                  <div class="flex items-center gap-2 mt-2">
-                    <span class="text-sm font-medium bg-gradient-to-r from-cyan-500 to-teal-400 bg-clip-text text-transparent px-3 py-1 rounded-full border border-cyan-500/30 backdrop-blur-sm">High Accuracy Scanning</span>
+                  <h3 class="text-2xl font-bold text-white">3D Scanning</h3>
+                  <div class="mt-2 flex items-center gap-2">
+                    <span class="rounded-full border border-cyan-500/30 px-3 py-1 text-sm font-medium text-cyan-300 backdrop-blur-sm">
+                      High Accuracy Capture
+                    </span>
                   </div>
                 </div>
               </div>
-              
-              <!-- Description -->
-              <p class="text-gray-300 mb-8 leading-relaxed">
-                Mengubah objek fisik menjadi data CAD 3D yang akurat menggunakan teknologi pemindaian terkini dengan presisi tinggi untuk reproduksi atau modifikasi.
+
+              <p class="mb-8 leading-relaxed text-gray-300">
+                Tahap ini berfungsi untuk menangkap bentuk aktual komponen secara akurat, termasuk detail geometri, kontur permukaan, dan area-area kritis yang dibutuhkan sebagai dasar pembangunan model digital.
               </p>
-              
-              <!-- Features -->
-              <div class="space-y-4 mb-8">
+
+              <div class="mb-8 space-y-4">
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Laser Scanning Technology</h4>
-                    <p class="text-gray-400 text-sm">Akurasi hingga ±0.025mm untuk detail permukaan kompleks</p>
+                    <h4 class="mb-1 font-semibold text-white">Surface Digitizing</h4>
+                    <p class="text-sm text-gray-400">Mengubah bentuk aktual part menjadi data digital dengan tingkat detail yang tinggi.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Point Cloud Processing</h4>
-                    <p class="text-gray-400 text-sm">Konversi data mentah menjadi model geometris yang rapi</p>
+                    <h4 class="mb-1 font-semibold text-white">Geometry Capture</h4>
+                    <p class="text-sm text-gray-400">Merekam dimensi dan karakter permukaan untuk komponen dengan bentuk sederhana maupun kompleks.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Multi-Format Export</h4>
-                    <p class="text-gray-400 text-sm">Support STL, STEP, IGES, Parasolid untuk kompatibilitas luas</p>
+                    <h4 class="mb-1 font-semibold text-white">Point Cloud Preparation</h4>
+                    <p class="text-sm text-gray-400">Menyiapkan data mentah sebagai referensi awal untuk proses CAD reconstruction.</p>
                   </div>
                 </div>
               </div>
-              
-              <!-- Technical Specs -->
-              <div class="bg-gradient-to-br from-cyan-900/30 to-teal-900/30 rounded-xl p-6 border border-cyan-500/20">
-                <h4 class="font-bold text-white mb-4 flex items-center gap-3">
+
+              <div class="rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-900/30 to-teal-900/30 p-6">
+                <h4 class="mb-4 flex items-center gap-3 font-bold text-white">
                   <span class="material-symbols-outlined text-teal-400">tune</span>
-                  Spesifikasi Teknis
+                  Output Utama
                 </h4>
                 <div class="grid grid-cols-2 gap-4">
-                  <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                    <div class="text-lg font-bold text-cyan-300 mb-1">±0.025mm</div>
-                    <div class="text-xs text-gray-400">Scanning Accuracy</div>
+                  <div class="rounded-lg bg-gradient-to-b from-white/5 to-transparent p-3 text-center">
+                    <div class="mb-1 text-lg font-bold text-cyan-300">Raw Scan</div>
+                    <div class="text-xs text-gray-400">Surface reference</div>
                   </div>
-                  <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                    <div class="text-lg font-bold text-cyan-300 mb-1">0.1mm</div>
-                    <div class="text-xs text-gray-400">Point Spacing</div>
-                  </div>
-                  <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                    <div class="text-lg font-bold text-cyan-300 mb-1">16+</div>
-                    <div class="text-xs text-gray-400">File Formats</div>
-                  </div>
-                  <div class="text-center p-3 bg-gradient-to-b from-white/5 to-transparent rounded-lg">
-                    <div class="text-lg font-bold text-cyan-300 mb-1">100%</div>
-                    <div class="text-xs text-gray-400">Data Integrity</div>
+                  <div class="rounded-lg bg-gradient-to-b from-white/5 to-transparent p-3 text-center">
+                    <div class="mb-1 text-lg font-bold text-cyan-300">Point Cloud</div>
+                    <div class="text-xs text-gray-400">Geometry base</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Service 2 -->
-          <div class="group relative backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all duration-500">
-            <!-- Background Glow -->
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
+          <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/30">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-indigo-900/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
             <div class="relative p-8">
-              <!-- Header -->
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span class="material-symbols-outlined text-white text-3xl">design_services</span>
+              <div class="mb-8 overflow-hidden rounded-xl border border-white/10">
+                <img src="../../assets/img/3d-scanner.webp" alt="CAD modeling process" class="h-64 w-full object-cover">
+              </div>
+
+              <div class="mb-8 flex items-center gap-4">
+                <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-500 shadow-lg">
+                  <span class="material-symbols-outlined text-3xl text-white">architecture</span>
                 </div>
                 <div>
-                  <h3 class="text-2xl font-bold text-white">Validasi Desain</h3>
-                  <div class="flex items-center gap-2 mt-2">
-                    <span class="text-sm font-medium bg-gradient-to-r from-blue-500 to-indigo-400 bg-clip-text text-transparent px-3 py-1 rounded-full border border-blue-500/30 backdrop-blur-sm">CAD/CAM Integration</span>
+                  <h3 class="text-2xl font-bold text-white">Modeling</h3>
+                  <div class="mt-2 flex items-center gap-2">
+                    <span class="rounded-full border border-blue-500/30 px-3 py-1 text-sm font-medium text-blue-300 backdrop-blur-sm">
+                      CAD Reconstruction
+                    </span>
                   </div>
                 </div>
               </div>
-              
-              <!-- Description -->
-              <p class="text-gray-300 mb-8 leading-relaxed">
-                Didukung oleh perangkat lunak CAD/CAM terdepan seperti Unigraphics dan Pro/Engineer untuk memastikan integritas dan fungsionalitas desain ulang.
+
+              <p class="mb-8 leading-relaxed text-gray-300">
+                Data hasil scan kemudian diterjemahkan menjadi model CAD yang rapi, terstruktur, dan siap digunakan untuk validasi desain, pembuatan drawing, optimasi bentuk, maupun proses manufaktur selanjutnya.
               </p>
-              
-              <!-- Software Capabilities -->
-              <div class="space-y-4 mb-8">
+
+              <div class="mb-8 space-y-4">
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Unigraphics NX</h4>
-                    <p class="text-gray-400 text-sm">Siemens PLM solution untuk design, simulation, dan manufacturing</p>
+                    <h4 class="mb-1 font-semibold text-white">CAD Reconstruction</h4>
+                    <p class="text-sm text-gray-400">Membangun ulang geometri menjadi data engineering yang bersih dan dapat diedit.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Pro/Engineer (Creo)</h4>
-                    <p class="text-gray-400 text-sm">Parametric modeling dengan robust assembly management</p>
+                    <h4 class="mb-1 font-semibold text-white">3D Modeling</h4>
+                    <p class="text-sm text-gray-400">Menyusun model parametrik atau surface model sesuai kebutuhan teknis komponen.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                  <span class="material-symbols-outlined mt-1 text-green-400">check_circle</span>
                   <div>
-                    <h4 class="font-semibold text-white mb-1">Simulation & Analysis</h4>
-                    <p class="text-gray-400 text-sm">FEA, CFD, dan kinematic analysis untuk validasi desain</p>
+                    <h4 class="mb-1 font-semibold text-white">Production Ready Data</h4>
+                    <p class="text-sm text-gray-400">Menyiapkan output yang bisa diteruskan ke engineering review, tooling, atau produksi.</p>
                   </div>
                 </div>
               </div>
-              
-              <!-- Validation Process -->
-              <div class="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 rounded-xl p-6 border border-blue-500/20">
-                <h4 class="font-bold text-white mb-4 flex items-center gap-3">
+
+              <div class="rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-900/30 to-indigo-900/30 p-6">
+                <h4 class="mb-4 flex items-center gap-3 font-bold text-white">
                   <span class="material-symbols-outlined text-indigo-400">verified</span>
-                  Proses Validasi
+                  Hasil Akhir
                 </h4>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span class="material-symbols-outlined text-white text-sm">1</span>
-                    </div>
-                    <span class="text-sm text-gray-300">Geometric Dimensioning & Tolerancing (GD&T)</span>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-lg bg-gradient-to-b from-white/5 to-transparent p-3 text-center">
+                    <div class="mb-1 text-lg font-bold text-blue-300">CAD Model</div>
+                    <div class="text-xs text-gray-400">Editable geometry</div>
                   </div>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span class="material-symbols-outlined text-white text-sm">2</span>
-                    </div>
-                    <span class="text-sm text-gray-300">Interference & Clearance Analysis</span>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span class="material-symbols-outlined text-white text-sm">3</span>
-                    </div>
-                    <span class="text-sm text-gray-300">Design for Manufacturing (DFM) Review</span>
+                  <div class="rounded-lg bg-gradient-to-b from-white/5 to-transparent p-3 text-center">
+                    <div class="mb-1 text-lg font-bold text-blue-300">Engineering File</div>
+                    <div class="text-xs text-gray-400">Ready for reuse</div>
                   </div>
                 </div>
               </div>
@@ -363,147 +325,118 @@
           </div>
         </div>
 
-        <!-- Applications Section -->
-        <div class="backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl border border-white/10 p-8 shadow-2xl">
-          <h3 class="text-2xl font-bold text-white mb-8 text-center">Aplikasi Industri</h3>
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="text-center p-6 bg-gradient-to-br from-white/5 to-white/3 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-cyan-600 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-8 shadow-2xl backdrop-blur-sm">
+          <h3 class="mb-8 text-center text-2xl font-bold text-white">Aplikasi Reverse Engineering</h3>
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-6 text-center transition-all duration-300 hover:border-cyan-500/30">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-600 to-teal-500">
                 <span class="material-symbols-outlined text-white">engineering</span>
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">Spare Parts Reproduction</h4>
-              <p class="text-gray-400 text-sm">Produksi ulang komponen yang sudah tidak diproduksi</p>
+              <h4 class="mb-2 text-lg font-bold text-white">Spare Part Recovery</h4>
+              <p class="text-sm text-gray-400">Membangun ulang data komponen lama yang tidak lagi memiliki drawing atau model CAD.</p>
             </div>
-            
-            <div class="text-center p-6 bg-gradient-to-br from-white/5 to-white/3 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+
+            <div class="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-6 text-center transition-all duration-300 hover:border-cyan-500/30">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-500">
                 <span class="material-symbols-outlined text-white">upgrade</span>
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">Design Modification</h4>
-              <p class="text-gray-400 text-sm">Upgrade dan optimasi desain existing</p>
+              <h4 class="mb-2 text-lg font-bold text-white">Design Improvement</h4>
+              <p class="text-sm text-gray-400">Menggunakan hasil modeling untuk evaluasi bentuk, penyesuaian, dan pengembangan produk.</p>
             </div>
-            
-            <div class="text-center p-6 bg-gradient-to-br from-white/5 to-white/3 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
-              <div class="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+
+            <div class="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-6 text-center transition-all duration-300 hover:border-cyan-500/30">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-teal-600 to-cyan-500">
                 <span class="material-symbols-outlined text-white">inventory_2</span>
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">Documentation Recovery</h4>
-              <p class="text-gray-400 text-sm">Pembuatan dokumentasi teknis yang hilang</p>
+              <h4 class="mb-2 text-lg font-bold text-white">Technical Documentation</h4>
+              <p class="text-sm text-gray-400">Menyiapkan basis data engineering untuk drawing, BOM, dan kebutuhan manufaktur lanjutan.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Technology Stack -->
-    <section class="py-16 bg-gradient-to-b from-gray-900 to-gray-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-2 mb-4">
-            <div class="w-2 h-8 bg-gradient-to-b from-cyan-500 to-teal-400 rounded-full"></div>
-            <span class="text-cyan-400 font-semibold tracking-wider uppercase text-sm">TECHNOLOGY STACK</span>
+    <section class="bg-gradient-to-b from-gray-900 to-gray-950 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center">
+          <div class="mb-4 inline-flex items-center gap-2">
+            <div class="h-8 w-2 rounded-full bg-gradient-to-b from-cyan-500 to-teal-400"></div>
+            <span class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Technology Stack</span>
           </div>
-          <h2 class="text-3xl font-bold text-white mb-4">
+          <h2 class="text-3xl font-bold text-white">
             <span class="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
-              Software & Hardware
+              Software & Hardware Support
             </span>
           </h2>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Software -->
-          <div class="backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10">
-            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-8 backdrop-blur-sm">
+            <h3 class="mb-6 flex items-center gap-3 text-xl font-bold text-white">
               <span class="material-symbols-outlined text-cyan-400">computer</span>
               Software Solutions
             </h3>
+
             <div class="space-y-4">
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-cyan-900/20 to-teal-900/20 rounded-lg">
+              <div class="flex items-center justify-between rounded-lg bg-gradient-to-br from-cyan-900/20 to-teal-900/20 p-4">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-cyan-600 to-teal-500 rounded-lg flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white">code</span>
-                  </div>
-                  <div>
-                    <div class="font-semibold text-white">Unigraphics NX</div>
-                    <div class="text-sm text-gray-400">Siemens PLM Software</div>
-                  </div>
-                </div>
-                <span class="text-xs text-cyan-300 bg-cyan-900/30 px-3 py-1 rounded-full">CAD/CAM/CAE</span>
-              </div>
-              
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 rounded-lg">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-500 rounded-lg flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white">design_services</span>
-                  </div>
-                  <div>
-                    <div class="font-semibold text-white">Pro/Engineer (Creo)</div>
-                    <div class="text-sm text-gray-400">PTC Parametric</div>
-                  </div>
-                </div>
-                <span class="text-xs text-blue-300 bg-blue-900/30 px-3 py-1 rounded-full">Parametric 3D</span>
-              </div>
-              
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-500 rounded-lg flex items-center justify-center">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-600 to-teal-500">
                     <span class="material-symbols-outlined text-white">polyline</span>
                   </div>
                   <div>
-                    <div class="font-semibold text-white">Geomagic Design X</div>
-                    <div class="text-sm text-gray-400">3D Systems</div>
+                    <div class="font-semibold text-white">Geomagic / Similar RE Tools</div>
+                    <div class="text-sm text-gray-400">Scan processing and reconstruction</div>
                   </div>
                 </div>
-                <span class="text-xs text-purple-300 bg-purple-900/30 px-3 py-1 rounded-full">Reverse Engineering</span>
+                <span class="rounded-full bg-cyan-900/30 px-3 py-1 text-xs text-cyan-300">Reverse Engineering</span>
+              </div>
+
+              <div class="flex items-center justify-between rounded-lg bg-gradient-to-br from-blue-900/20 to-indigo-900/20 p-4">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-500">
+                    <span class="material-symbols-outlined text-white">design_services</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white">CAD Modeling Software</div>
+                    <div class="text-sm text-gray-400">Engineering reconstruction and editable data</div>
+                  </div>
+                </div>
+                <span class="rounded-full bg-blue-900/30 px-3 py-1 text-xs text-blue-300">Modeling</span>
               </div>
             </div>
           </div>
 
-          <!-- Hardware -->
-          <div class="backdrop-blur-sm bg-gradient-to-br from-white/5 to-white/3 rounded-2xl p-8 border border-white/10">
-            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+          <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/3 p-8 backdrop-blur-sm">
+            <h3 class="mb-6 flex items-center gap-3 text-xl font-bold text-white">
               <span class="material-symbols-outlined text-teal-400">hardware</span>
               Hardware Equipment
             </h3>
+
             <div class="space-y-4">
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-teal-900/20 to-emerald-900/20 rounded-lg">
+              <div class="flex items-center justify-between rounded-lg bg-gradient-to-br from-teal-900/20 to-emerald-900/20 p-4">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-teal-600 to-emerald-500 rounded-lg flex items-center justify-center">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-teal-600 to-emerald-500">
                     <span class="material-symbols-outlined text-white">scanner</span>
                   </div>
                   <div>
-                    <div class="font-semibold text-white">3D Laser Scanner</div>
-                    <div class="text-sm text-gray-400">High Precision</div>
+                    <div class="font-semibold text-white">3D Scanner</div>
+                    <div class="text-sm text-gray-400">Geometry and surface capture</div>
                   </div>
                 </div>
-                <span class="text-xs text-teal-300 bg-teal-900/30 px-3 py-1 rounded-full">±0.025mm</span>
+                <span class="rounded-full bg-teal-900/30 px-3 py-1 text-xs text-teal-300">Capture</span>
               </div>
-              
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-amber-900/20 to-orange-900/20 rounded-lg">
+
+              <div class="flex items-center justify-between rounded-lg bg-gradient-to-br from-gray-900/20 to-slate-900/20 p-4">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-500 rounded-lg flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white">precision_manufacturing</span>
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gray-600 to-slate-500">
+                    <span class="material-symbols-outlined text-white">memory</span>
                   </div>
                   <div>
-                    <div class="font-semibold text-white">CMM Arms</div>
-                    <div class="text-sm text-gray-400">Portable Measurement</div>
+                    <div class="font-semibold text-white">Engineering Workstation</div>
+                    <div class="text-sm text-gray-400">Processing and CAD reconstruction workflow</div>
                   </div>
                 </div>
-                <span class="text-xs text-amber-300 bg-amber-900/30 px-3 py-1 rounded-full">7-axis</span>
-              </div>
-              
-              <div class="flex items-center justify-between p-4 bg-gradient-to-br from-gray-900/20 to-slate-900/20 rounded-lg">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-gradient-to-br from-gray-600 to-slate-500 rounded-lg flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white">developer_board</span>
-                  </div>
-                  <div>
-                    <div class="font-semibold text-white">Workstation</div>
-                    <div class="text-sm text-gray-400">High Performance</div>
-                  </div>
-                </div>
-                <span class="text-xs text-gray-300 bg-gray-900/30 px-3 py-1 rounded-full">64GB RAM</span>
+                <span class="rounded-full bg-gray-900/30 px-3 py-1 text-xs text-gray-300">Model Build</span>
               </div>
             </div>
           </div>
@@ -511,63 +444,48 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="relative py-20 overflow-hidden">
-      <!-- Background -->
+    <section class="relative overflow-hidden py-20">
       <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/40 via-gray-900 to-teal-900/40">
-        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-teal-400/10 to-blue-500/10 animate-gradient-x"></div>
+        <div class="absolute inset-0 animate-gradient-x bg-gradient-to-r from-cyan-500/10 via-teal-400/10 to-blue-500/10"></div>
       </div>
-      
-      <!-- Floating Elements -->
+
       <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-cyan-500/5 to-transparent rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tr from-teal-500/5 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute -left-1/2 -top-1/2 h-full w-full rounded-full bg-gradient-to-br from-cyan-500/5 to-transparent blur-3xl"></div>
+        <div class="absolute -bottom-1/2 -right-1/2 h-full w-full rounded-full bg-gradient-to-tr from-teal-500/5 to-transparent blur-3xl"></div>
       </div>
-      
-      <!-- Content -->
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <!-- Heading -->
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 class="mb-6 text-3xl font-bold text-white md:text-4xl">
             Butuh <span class="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">Reverse Engineering</span>?
           </h2>
-          
-          <!-- Subtitle -->
-          <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Konsultasikan komponen Anda yang membutuhkan digitalisasi dengan tim certified engineer kami.
+
+          <p class="mx-auto mb-8 max-w-2xl text-xl text-gray-300">
+            Konsultasikan kebutuhan 3D scanning dan modeling Anda bersama tim kami untuk reproduksi maupun pengembangan komponen.
           </p>
-          
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <!-- Primary CTA -->
-            <router-link 
-              to="/contact" 
-              class="group relative bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-700 hover:to-teal-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-cyan-500/25 hover:scale-105 overflow-hidden"
+
+          <div class="flex flex-col justify-center gap-4 sm:flex-row">
+            <router-link
+              to="/contact"
+              class="group relative flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 to-teal-500 px-8 py-4 font-semibold text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:from-cyan-700 hover:to-teal-600 hover:shadow-cyan-500/25"
             >
-              <!-- Hover Effect -->
-              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-white/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <!-- Content -->
+              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-white/10 to-teal-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
               <span class="material-symbols-outlined relative">upload</span>
               <span class="relative">Kirim Data Komponen</span>
             </router-link>
-            
-            <!-- Secondary CTA -->
-            <a 
-              href="tel:+62812207030" 
-              class="group relative bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 border-2 border-white/30 hover:border-white flex items-center justify-center gap-3 hover:scale-105 backdrop-blur-sm"
+
+            <a
+              href="tel:+62812207030"
+              class="group relative flex items-center justify-center gap-3 rounded-xl border-2 border-white/30 bg-transparent px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white hover:bg-white/10"
             >
               <span class="material-symbols-outlined">call</span>
               <span>+62 812 207 030</span>
-              
-              <!-- Animated Underline -->
-              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-teal-300 group-hover:w-full transition-all duration-300"></div>
+              <div class="absolute -bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gradient-to-r from-cyan-400 to-teal-300 transition-all duration-300 group-hover:w-full"></div>
             </a>
           </div>
-          
-          <!-- Support Text -->
-          <p class="mt-8 text-gray-400 text-sm">
-            Sertifikasi Departemen Perindustrian menjamin kualitas dan akurasi layanan kami
+
+          <p class="mt-8 text-sm text-gray-400">
+            Layanan difokuskan untuk capture geometri aktual dan pembangunan model engineering yang siap digunakan kembali.
           </p>
         </div>
       </div>
@@ -584,11 +502,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Custom Animations */
 @keyframes gradient-x {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -599,58 +518,25 @@ onMounted(() => {
   animation: gradient-x 3s ease infinite;
 }
 
-@keyframes pulse {
-  0%, 100% {
+@keyframes pulse-soft {
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
-    opacity: 0.7;
+    opacity: 0.65;
   }
 }
 
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
+.animate-pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
 }
 
-/* Circuit Line Animation */
-@keyframes circuit-glow {
-  0%, 100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-.circuit-line {
-  animation: circuit-glow 3s ease-in-out infinite;
-}
-
-/* 3D Rotation Effect */
-@keyframes rotate-3d {
-  0% {
-    transform: rotateX(0) rotateY(0);
-  }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg);
-  }
-}
-
-.rotate-3d {
-  animation: rotate-3d 20s linear infinite;
-}
-
-/* Scan Line Effect */
-@keyframes scan-line {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-.scan-line {
-  animation: scan-line 2s linear infinite;
+.cad-grid {
+  background-image:
+    linear-gradient(90deg, rgba(6, 182, 212, 0.8) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(6, 182, 212, 0.8) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 </style>

@@ -8,8 +8,6 @@ import Customer from '../components/customer.vue'
 import TypeMachine from '../components/product/type_machine.vue'
 import ReverseEngineering from '../components/product/reverse_engineering.vue'
 import QualityControl from '../components/product/quality_control.vue'
-import Prototype from '../components/product/prototype.vue'
-import MassProduction from '../components/product/mass_production.vue'
 import MachineCapabilities from '../components/product/machine_capabilities.vue'
 
 const routes = [
@@ -19,12 +17,10 @@ const routes = [
   { path: '/certificate', component: Certificate },
   { path: '/customer', component: Customer },
 
-  { path: '/product/type-machine', component: TypeMachine },
+  { path: '/product/cnc-machine', component: TypeMachine },
   { path: '/product/reverse-engineering', component: ReverseEngineering },
-  { path: '/product/quality-control', component: QualityControl },
-  { path: '/product/prototype', component: Prototype },
-  { path: '/product/mass-production', component: MassProduction },
-  { path: '/product/machine-capabilities', component: MachineCapabilities },
+  { path: '/product/inspection', component: QualityControl },
+  { path: '/product/special-treatment', component: MachineCapabilities },
 ]
 
 const router = createRouter({

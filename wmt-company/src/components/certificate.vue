@@ -430,7 +430,7 @@ const closeDetails = () => {
     border-radius: 1rem;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    height: 200px;
+    height: 450px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -827,7 +827,8 @@ const closeDetails = () => {
     }
 
     .card-image {
-        height: 160px;
+        height: 190px;
+        margin: 0;
     }
 
     .modal-content {

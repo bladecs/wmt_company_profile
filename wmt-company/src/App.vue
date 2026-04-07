@@ -40,12 +40,10 @@ const isCompanyActive = computed(() => {
 const isServicesActive = computed(() => {
   return activeRoute.value.startsWith('/services') ||
     activeRoute.value.startsWith('/product') ||
-    activeRoute.value === '/precision-part' ||
-    activeRoute.value === '/plastic-injection' ||
-    activeRoute.value === '/mold-dies' ||
-    activeRoute.value === '/turbine-part' ||
-    activeRoute.value === '/medical-part' ||
-    activeRoute.value === '/rubber'
+    activeRoute.value === '/product/cnc-machine' ||
+    activeRoute.value === '/product/reverse-engineering' ||
+    activeRoute.value === '/product/inspection' ||
+    activeRoute.value === '/product/special-treatment'
 })
 
 // Loading animation texts
@@ -336,26 +334,14 @@ onUnmounted(() => {
             <transition name="dropdown">
               <div v-if="servicesDropdownOpen" class="dropdown-menu product-dropdown">
 
-                <router-link to="/product"
+                <router-link to="/product/cnc-machine"
                   class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product' ? 'dropdown-item-active' : ''" @click="closeProductDropdown">
-                  <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product' ? 'text-blue-600' : 'group-hover:text-blue-600'">inventory_2</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">All
-                    Products</span>
-                </router-link>
-
-                <div class="dropdown-divider"></div>
-
-                <router-link to="/product/type-machine"
-                  class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product/type-machine' ? 'dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/cnc-machine' ? 'dropdown-item-active' : ''"
                   @click="closeProductDropdown">
                   <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product/type-machine' ? 'text-blue-600' : 'group-hover:text-blue-600'">precision_manufacturing</span>
+                    :class="activeRoute === '/product/cnc-machine' ? 'text-blue-600' : 'group-hover:text-blue-600'">precision_manufacturing</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product/type-machine' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Type
+                    :class="activeRoute === '/product/cnc-machine' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">CNC
                     Machine</span>
                 </router-link>
 
@@ -370,47 +356,25 @@ onUnmounted(() => {
                     Engineering</span>
                 </router-link>
 
-                <router-link to="/product/quality-control"
+                <router-link to="/product/inspection"
                   class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product/quality-control' ? 'dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/inspection' ? 'dropdown-item-active' : ''"
                   @click="closeProductDropdown">
                   <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product/quality-control' ? 'text-blue-600' : 'group-hover:text-blue-600'">fact_check</span>
+                    :class="activeRoute === '/product/inspection' ? 'text-blue-600' : 'group-hover:text-blue-600'">fact_check</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product/quality-control' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Quality
-                    Control</span>
+                    :class="activeRoute === '/product/inspection' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Inspection</span>
                 </router-link>
 
-                <router-link to="/product/prototype"
+                <router-link to="/product/special-treatment"
                   class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product/prototype' ? 'dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/special-treatment' ? 'dropdown-item-active' : ''"
                   @click="closeProductDropdown">
                   <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product/prototype' ? 'text-blue-600' : 'group-hover:text-blue-600'">science</span>
+                    :class="activeRoute === '/product/special-treatment' ? 'text-blue-600' : 'group-hover:text-blue-600'">science</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product/prototype' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Prototype</span>
-                </router-link>
-
-                <router-link to="/product/mass-production"
-                  class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product/mass-production' ? 'dropdown-item-active' : ''"
-                  @click="closeProductDropdown">
-                  <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product/mass-production' ? 'text-blue-600' : 'group-hover:text-blue-600'">factory</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product/mass-production' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Mass
-                    Production</span>
-                </router-link>
-
-                <router-link to="/product/machine-capabilities"
-                  class="dropdown-item flex items-center gap-3 transition-all duration-200 group"
-                  :class="activeRoute === '/product/machine-capabilities' ? 'dropdown-item-active' : ''"
-                  @click="closeProductDropdown">
-                  <span class="material-symbols-outlined text-base transition-colors duration-300"
-                    :class="activeRoute === '/product/machine-capabilities' ? 'text-blue-600' : 'group-hover:text-blue-600'">settings_applications</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/product/machine-capabilities' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Machine
-                    Capabilities</span>
+                    :class="activeRoute === '/product/special-treatment' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Special
+                    Treatment</span>
                 </router-link>
 
               </div>
@@ -529,81 +493,43 @@ onUnmounted(() => {
             </div>
             <transition name="mobile-dropdown">
               <div v-if="servicesDropdownOpen" class="mobile-dropdown-content">
-                <router-link to="/services"
+                <router-link to="/product/cnc-machine"
                   class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/services' ? 'mobile-dropdown-item-active' : ''" @click="handleRouteChange">
-                  <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/services' ? 'text-blue-600' : 'group-hover:text-blue-600'">all_inclusive</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/services' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">All
-                    Services</span>
-                </router-link>
-                <router-link to="/precision-part"
-                  class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/precision-part' ? 'mobile-dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/cnc-machine' ? 'mobile-dropdown-item-active' : ''"
                   @click="handleRouteChange">
                   <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/precision-part' ? 'text-blue-600' : 'group-hover:text-blue-600'">precision_manufacturing</span>
+                    :class="activeRoute === '/product/cnc-machine' ? 'text-blue-600' : 'group-hover:text-blue-600'">precision_manufacturing</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/precision-part' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Precision
-                    Part</span>
+                    :class="activeRoute === '/product/cnc-machine' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">CNC
+                    Machine</span>
                 </router-link>
-                <router-link to="/plastic-injection"
+                <router-link to="/product/reverse-engineering"
                   class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/plastic-injection' ? 'mobile-dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/reverse-engineering' ? 'mobile-dropdown-item-active' : ''"
                   @click="handleRouteChange">
                   <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/plastic-injection' ? 'text-blue-600' : 'group-hover:text-blue-600'">inventory_2</span>
+                    :class="activeRoute === '/product/reverse-engineering' ? 'text-blue-600' : 'group-hover:text-blue-600'">engineering</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/plastic-injection' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Plastic
-                    Injection</span>
+                    :class="activeRoute === '/product/reverse-engineering' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Reverse
+                    Engineering</span>
                 </router-link>
-                <router-link to="/mold-dies"
+                <router-link to="/product/inspection"
                   class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/mold-dies' ? 'mobile-dropdown-item-active' : ''" @click="handleRouteChange">
+                  :class="activeRoute === '/product/inspection' ? 'mobile-dropdown-item-active' : ''" @click="handleRouteChange">
                   <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/mold-dies' ? 'text-blue-600' : 'group-hover:text-blue-600'">construction</span>
+                    :class="activeRoute === '/product/inspection' ? 'text-blue-600' : 'group-hover:text-blue-600'">fact_check</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/mold-dies' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Mold
-                    & Dies</span>
+                    :class="activeRoute === '/product/inspection' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Inspection</span>
                 </router-link>
-                <router-link to="/turbine-part"
+                <router-link to="/product/special-treatment"
                   class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/turbine-part' ? 'mobile-dropdown-item-active' : ''"
+                  :class="activeRoute === '/product/special-treatment' ? 'mobile-dropdown-item-active' : ''"
                   @click="handleRouteChange">
                   <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/turbine-part' ? 'text-blue-600' : 'group-hover:text-blue-600'">rocket_launch</span>
+                    :class="activeRoute === '/product/special-treatment' ? 'text-blue-600' : 'group-hover:text-blue-600'">science</span>
                   <span class="transition-colors duration-300"
-                    :class="activeRoute === '/turbine-part' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Turbine
-                    Part</span>
-                </router-link>
-                <router-link to="/medical-part"
-                  class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/medical-part' ? 'mobile-dropdown-item-active' : ''"
-                  @click="handleRouteChange">
-                  <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/medical-part' ? 'text-blue-600' : 'group-hover:text-blue-600'">medical_services</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/medical-part' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Medical
-                    Part</span>
-                </router-link>
-                <router-link to="/rubber"
-                  class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute === '/rubber' ? 'mobile-dropdown-item-active' : ''" @click="handleRouteChange">
-                  <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute === '/rubber' ? 'text-blue-600' : 'group-hover:text-blue-600'">water_drop</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute === '/rubber' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Rubber</span>
-                </router-link>
-
-                <router-link to="/product"
-                  class="mobile-dropdown-item flex items-center gap-4 transition-all duration-300 group"
-                  :class="activeRoute.startsWith('/product') ? 'mobile-dropdown-item-active' : ''"
-                  @click="handleRouteChange">
-                  <span class="material-symbols-outlined text-lg transition-colors duration-300"
-                    :class="activeRoute.startsWith('/product') ? 'text-blue-600' : 'group-hover:text-blue-600'">inventory_2</span>
-                  <span class="transition-colors duration-300"
-                    :class="activeRoute.startsWith('/product') ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Product</span>
+                    :class="activeRoute === '/product/special-treatment' ? 'text-blue-600 font-medium' : 'group-hover:text-blue-600'">Special
+                    Treatment</span>
                 </router-link>
               </div>
             </transition>
@@ -678,20 +604,16 @@ onUnmounted(() => {
               Services
             </h3>
             <ul class="space-y-3">
-              <li><router-link to="/precision-part"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Precision Part</router-link>
+              <li><router-link to="/product/cnc-machine"
+                  class="text-gray-300 hover:text-white transition-colors duration-200">CNC Machine</router-link>
               </li>
-              <li><router-link to="/plastic-injection"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Plastic Injection</router-link>
+              <li><router-link to="/product/reverse-engineering"
+                  class="text-gray-300 hover:text-white transition-colors duration-200">Reverse Engineering</router-link>
               </li>
-              <li><router-link to="/mold-dies"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Mold & Dies</router-link></li>
-              <li><router-link to="/medical-part"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Medical Part</router-link></li>
-              <li><router-link to="/turbine-part"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Turbine Part</router-link></li>
-              <li><router-link to="/rubber"
-                  class="text-gray-300 hover:text-white transition-colors duration-200">Rubber</router-link></li>
+              <li><router-link to="/product/inspection"
+                  class="text-gray-300 hover:text-white transition-colors duration-200">Inspection</router-link></li>
+              <li><router-link to="/product/special-treatment"
+                  class="text-gray-300 hover:text-white transition-colors duration-200">Special Treatment</router-link></li>
             </ul>
           </div>
         </div>
